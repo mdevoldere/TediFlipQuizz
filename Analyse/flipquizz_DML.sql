@@ -1,46 +1,24 @@
 USE flipquizz;
 
 
-INSERT INTO TEAMS
-(team_id, team_name)
-VALUES
-(1, 'DWWM'),
-(2, 'CDA'),
-(3, 'Formateurs');
-
 INSERT INTO `QUIZZ`
 (`quizz_id`, `quizz_name`)
 VALUES 
 (1, 'Quizz de Noël'),
 (2, 'Quizz du 3 Janvier');
 
-INSERT INTO THEMES 
-(theme_id, theme_name, theme_description) 
+INSERT INTO CATEGORIES 
+(theme_id, theme_name, theme_description, quizz_id) 
 VALUES 
-(1, 'C#', 'Questions about c#')
-(2, 'ASP.NET', 'ASP.NET attacks !'),
-(3, 'Javascript', 'Javascript is not Java'),
-(4, 'UML', 'UML is not ULM'),
-(5, 'Merise', 'Merise time !'),
-(6, 'Movies', NULL),
-(7, 'Video Games', 'Online Game');
-
-INSERT INTO LEVELS 
-(level_id, level_point)
-VALUES 
-(1, '100'),
-(2, '200'),
-(3, '300'),
-(4, '400'),
-(5, '500');
-
--- 2019-11-28 15:04:00
-INSERT INTO GAMES 
-(game_id, game_date, quizz_id)
-VALUES
-(1, '2019-11-28 15:04:54', 1),
-(2, '2020-01-03 09:30:01', 2);
-
+(1, 'C#', 'Questions about c#', 1)
+(2, 'ASP.NET', 'ASP.NET attacks !', 1),
+(3, 'Javascript', 'Javascript is not Java', 1),
+(4, 'UML', 'UML is not ULM', 2),
+(5, 'Merise', 'Merise time !', 2),
+(6, 'Movies', NULL, 2),
+(7, 'Taratata', 'Music is life', 2),
+(7, 'English Basics', 'Beginners', 2),
+(7, 'Alsace', 'Jolie région', 2);
 
 INSERT INTO QUESTIONS 
 (question_id, question_content, question_answer, level_id, theme_id)
@@ -75,11 +53,21 @@ INSERT INTO QUESTIONS
 (29, 'What is the answer to the question #29 ?', 'Anwser #29', 4, 5),
 (30, 'What is the answer to the question #30 ?', 'Anwser #30', 5, 5);
 
-INSERT INTO QUIZZ_THEMES
-(theme_id, quizz_id)
+
+INSERT INTO TEAMS
+(team_id, team_name)
 VALUES
-(1, 1), (2, 1), (3, 1), 
-(1, 2), (2, 2), (3, 2), (4, 2), (5, 2);
+(1, 'DWWM'),
+(2, 'CDA'),
+(3, 'Formateurs');
+
+-- 2019-11-28 15:04:00
+INSERT INTO GAMES 
+(game_id, game_date, quizz_id)
+VALUES
+(1, '2019-11-28 15:04:54', 1),
+(2, '2020-01-03 09:30:01', 2);
+
 
 INSERT INTO GAMES_TEAMS 
 (game_id, team_id) 
