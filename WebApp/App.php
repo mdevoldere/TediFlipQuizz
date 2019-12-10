@@ -12,7 +12,7 @@ class App
         }
     }
 
-    protected static setRoute()
+    protected static function setRoute()
     {
         try {
             

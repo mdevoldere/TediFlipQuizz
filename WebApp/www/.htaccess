@@ -1,0 +1,10 @@
+# questions/1
+# http://flipquizz.crm/index.php?url=questions/1
+
+# Activation du moteur de réécriture d'URL
+RewriteEngine On 
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !favicon.ico$ 
+RewriteRule ^([a-zA-Z0-9\-/\.]+)([/]*)$ /index.php?url=$1 [L] 
