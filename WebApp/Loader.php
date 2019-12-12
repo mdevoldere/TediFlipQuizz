@@ -3,8 +3,10 @@
 
 class Loader
 {
-    public static function autoload($classname)
+    public static function autoload($classname) // 'Models\Db' / 'Router'
     {
+        $classname = str_replace('\\', '/', $classname); // Models/Db
+
         $path = __DIR__.'/'.$classname.'.php';
 
         try 

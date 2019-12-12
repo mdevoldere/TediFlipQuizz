@@ -12,13 +12,5 @@ class App
         }
     }
 
-    protected static function setRoute()
-    {
-        try {
-            
-        }
-        catch(Exception $e) {
-
-        }
-    }
+    
 }
