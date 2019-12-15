@@ -8,4 +8,18 @@ window.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
+    var appHeader = new Vue({
+        el: '#appHeader',
+        data: {
+          title: 'Tedi FlipQuiz',
+          headers: [
+            { text: 'Team #1' },
+            { text: 'Quiz Title' },
+            { text: 'Team#2' }
+          ]
+        }
+      })
+
+    
+
 });
