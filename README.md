@@ -11,3 +11,19 @@ Le maître de jeu a la possibilité d’accéder à une interface de gestion qui
 -	D’accéder à l’historique des parties jouées.
 -	D’exporter l’historique ou les statistiques d’une partie au format Excel.
 -	De sauvegarder une partie en cours dans le but de la reprendre lors d’une séance ultérieure.
+
+L'application sera utilisée en mode "projection". Elle n'a pas vocation à mettre en concurrence 2 équipes par écrans interposés. Les participants n'interagissent pas directement avec le logiciel. 
+Durant une partie de quizz, c'est le maitre de jeu qui valide ou invalide une réponse à une question.
+L'application sera utilisable au travers d'un navigateur web et sera proposée en 2 déclinaisons : 
+### Base
+-	Administration des quizz, catégories et questions.
+-	Lancement d'une partie de quizz paramétrée (choix du quizz, nom des équipes)
+-	Interface du jeu
+### Évolué
+-	Toutes les fonctionnalités de la version de base
+-	Gestion d'un historique
+o	Persistance des équipes avec cumul des points
+o	Historique des parties (chaque tour de jeu est enregistré)
+-	Statistiques et Exportation
+o	Statistiques des équipes, parties…
+o	Export des statistiques au format Excel
