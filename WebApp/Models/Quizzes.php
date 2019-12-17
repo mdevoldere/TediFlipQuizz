@@ -3,39 +3,17 @@
 namespace Models;
 
 
-class Quizzes 
+class Quizzes extends Model
 {
 
-    public static function getQuizzes()
+    public function getAll()
     {
-        $sql = "SELECT * FROM quizz;";
-
-        $pdo = Db::getDb();
-
-        $stmt = $pdo->query($sql);
-
-        $result = $stmt->fetchAll();
-
-        return $result;
+        return $this->queryAll("SELECT * FROM quizz;");
     }
 
-    public static function getQuiz($id)
+    public function get(int $id)
     {
-        $sql = "SELECT * FROM quizz WHERE quizz_id=:id;";
-        
-        $stmt = Db::getDb()->prepare($sql);
-
-        $vars = [
-            ':id' => $id
-        ];
-        
-        $stmt->execute($vars);
-        
-        $result = $stmt->fetch();
-
-        $stmt->closeCursor();
-
-        return $result;
+        return $this->query("SELECT * FROM quizz WHERE quizz_id=:id;", [':id' => $id]);
     }
 
 

@@ -40,5 +40,20 @@ class Router
         $this->action = basename($url[2] ?? 'get'); 
     }
 
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 }
