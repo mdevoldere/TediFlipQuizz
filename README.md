@@ -22,8 +22,8 @@ L'application sera utilisable au travers d'un navigateur web et sera proposée e
 ### Évolué
 -	Toutes les fonctionnalités de la version de base
 -	Gestion d'un historique
-o	Persistance des équipes avec cumul des points
-o	Historique des parties (chaque tour de jeu est enregistré)
+ * Persistance des équipes avec cumul des points
+ * Historique des parties (chaque tour de jeu est enregistré)
 -	Statistiques et Exportation
-o	Statistiques des équipes, parties…
-o	Export des statistiques au format Excel
+ *	Statistiques des équipes, parties…
+ *	Export des statistiques au format Excel
