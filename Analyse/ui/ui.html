@@ -1,48 +1,40 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Flip Quiz</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tedi Flip Quiz</title>
         <link rel="stylesheet" href="ui.css">
         <script src="vue.js"></script>
+        <script src="app.js"></script>
         <script src="ui.js"></script>
     </head>
     <body>
-        <header id="appHeader">
-                <article v-for="hitem in headers">{{ hitem.text }}</article>
+        <header id="top">
+            <h1>{{ title }}</h1>
+            <nav>
+                <ul id="topBar">
+                    <li v-for="team in teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }}</a></li>
+                </ul>
+            </nav>
+            <aside>
+                <a href="#" id="end">End Quiz</a>
+            </aside>
         </header>
-        <main>
-            <section>
-                <h2>Theme #1</h2>
+
+        <main id="app">
+            <section v-for="category in categories">
+                <h2>{{ category.name }}</h2>
+                <article class="appArticle" v-for="question in category.questions">
+                    <div :data-qid="question.id" :data-level="question.level">
+                        {{ question.level }}
+                    </div>
+                    <aside class="" :id="question.selector">
+                        <h3>{{ question.content }}</h3>
+                        <button>Réponse correcte</button> 
+                        <button>Réponse fausse</button>
+                    </aside>
+                </article>
             </section>
-                <article class="p1">100 points</article>
-                <article class="p2">100 points</article>
-                <article class="p3">100 points</article>
-                <article class="p4">100 points</article>
-                <article class="p5">100 points</article>
-
-                <article class="p1">200 points</article>
-                <article class="p2">200 points</article>
-                <article class="p3">200 points</article>
-                <article class="p4">200 points</article>
-                <article class="p5">200 points</article>
-                
-                <article class="p1">300 points</article>
-                <article class="p2">300 points</article>
-                <article class="p3">300 points</article>
-                <article class="p4">300 points</article>
-                <article class="p5">300 points</article>
-                
-                <article class="p1">400 points</article>
-                <article class="p2">400 points</article>
-                <article class="p3">400 points</article>
-                <article class="p4">400 points</article>
-                <article class="p5">400 points</article>
-
-                <article class="p1">500 points</article>
-                <article class="p2">500 points</article>
-                <article class="p3">500 points</article>
-                <article class="p4">500 points</article>
-                <article class="p5">500 points</article>
         </main>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-class App 
+class Api
 {
     public static function run()
     {
@@ -24,6 +24,7 @@ class App
                 $result = $model->get($id);
             }
             
+            header('Content-Type: application/json');
             exit(json_encode($result));            
         }
         catch(Exception $e) {

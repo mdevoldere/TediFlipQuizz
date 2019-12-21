@@ -1,8 +1,12 @@
-# questions/1
-# http://flipquizz.crm/index.php?url=questions/1
+# http://flipquizz.crm/questions/1 => http://flipquizz.crm/index.php?url=questions/1
 
 # Activation du moteur de réécriture d'URL
 RewriteEngine On 
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !favicon.ico$ 
+RewriteRule ^api/([a-zA-Z0-9\-/\.]+)([/]*)$ /api.php?url=$1 [L] 
 
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME} !-f 

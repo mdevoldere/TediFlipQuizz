@@ -3,14 +3,91 @@
 }
 
 body {
-    background-color: #111133;
-    color: #cc1;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #ccc;
 }
 
-header, main {
+#top {
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #11ccff11;
+    
+}
+
+#top > * { 
+    flex: 1;
+    height: 100%;
+}
+
+#top h1 {
+    margin: 1px;
+    flex: 1;
+}
+ 
+#top nav {
+    flex: 4;
+}
+
+
+
+#topBar {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#topBar a, #top aside a {
+    display: block;
+    padding: 1em;
+    color: #fff;
+    background-color: #11ccff11;
+    text-decoration: none;
+    transition: all ease 1s;
+}
+
+#topBar a:hover {
+    color: #fff;
+    background-color: #11ccff33;
+}
+
+#topBar a.active {
+    color: #cc0;
+    background-color: #11ccff55;
+}
+
+#topBar li {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+#top aside {
+    flex: 1;
+    text-align: right;
+}
+
+#top aside a {
+    display: inline-block;
+    padding: 1em;
+    background-color: transparent;
+}
+
+
+#app {
     width: 1200px;
-    margin: 1em auto;
-    border: 1px solid #111;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 1em;
     display: flex;
     flex-wrap: wrap;
@@ -18,40 +95,51 @@ header, main {
     justify-content: space-around;
 }
 
-header > article, main > article {
-    border: 1px solid #611;
-    margin: 10px 1em;
-    width: 180px;
-    height: 40px;
+#app section {
+    margin: 1em 0;
+    width: 15%;
     text-align:center;
 }
 
-main > article {
-    border: 1px solid #166;
-    margin: 10px 1em;
-    height: 100px;
+.appArticle {
+    margin: 0 0 1em 0;
+    width: 100%;
+    text-align:center;
+    border: 1px solid #111;
+    background-color: #ffffff11;
 }
 
-header > article:hover, main > article:hover {
+.appArticle:hover {
     cursor: pointer;
+    border: 1px solid #ffffff99;
+    background-color: #ffffff33;
 }
 
-.p1 {
-    background-color: #FFC;
+.appArticle div {
+    height: 2.2em;
+    padding: 0.5em;
+    font-size: 2em;
+    font-weight: bold;
 }
 
-.p2 {
-    background-color: #FCF;
+.appArticle aside {
+    display:block;
+    position:absolute;
+    left:0;
+    top: 0;
+    padding: 0;
+    font-size: 3em;
+    font-weight: bold;
+    background-color: #111;
+    /*transition: all ease 1s;*/
+    height:0;
+    width:0;
+    overflow: hidden;
 }
 
-.p3 {
-    background-color: #FFC;
-}
-
-.p4 {
-    background-color: #CCF;
-}
-
-.p5 {
-    background-color: #CFC;
+.appArticle aside.active {
+    display:block;
+    padding: 5em;
+    width:100vw;
+    height: 100vh;
 }
