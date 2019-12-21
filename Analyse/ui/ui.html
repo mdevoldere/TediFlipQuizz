@@ -4,37 +4,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tedi Flip Quiz</title>
         <link rel="stylesheet" href="ui.css">
-        <script src="vue.js"></script>
-        <script src="app.js"></script>
-        <script src="ui.js"></script>
+        <script src="js/vue.js"></script>
+        <script src="js/models.js"></script>
+        <script src="js/ui.js"></script>
     </head>
     <body>
-        <header id="top">
-            <h1>{{ title }}</h1>
-            <nav>
-                <ul id="topBar">
-                    <li v-for="team in teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }}</a></li>
-                </ul>
-            </nav>
-            <aside>
-                <a href="#" id="end">End Quiz</a>
-            </aside>
-        </header>
-
         <main id="app">
-            <section v-for="category in categories">
-                <h2>{{ category.name }}</h2>
-                <article class="appArticle" v-for="question in category.questions">
-                    <div :data-qid="question.id" :data-level="question.level">
-                        {{ question.level }}
+            
+            <section id="top">
+                <h1>{{ title }}</h1>
+                <ul>
+                    <li v-for="team in quiz.teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }} ({{ team.score }} pts)</a></li>
+                </ul>
+                <nav>
+                    <a href="#" id="end">End Quiz</a>
+                </nav>
+            </section>
+
+            <section id="quiz" class="container">
+                <article class="question" v-for="category in quiz.categories">
+                    <header>{{ category.name }}</header>
+                    <div v-bind:class="[question.isAvailable ? '' : 'disabled']" v-for="question in category.questions">
+                        <p v-on:click="questionClick" :data-qid="question.id" :data-level="question.level">
+                            {{ question.level }}
+                        </p>
                     </div>
-                    <aside class="" :id="question.selector">
-                        <h3>{{ question.content }}</h3>
-                        <button>Réponse correcte</button> 
-                        <button>Réponse fausse</button>
-                    </aside>
                 </article>
             </section>
+
+            <section id="config" class="container active">
+                <h2>Quiz Configuration</h2>
+                    <div v-for="(team) in quiz.teams">
+                    Team #{{ team.id }} Name: 
+                    <input v-model="team.name">
+                </div>
+                <button v-on:click="startQuiz">Start</button>
+            </section>
+
+            <section id="message" class="">
+                {{ quiz.message }}
+            </section>
+
+            <div id="currentQuestion">
+                <h3>{{ question.content }}</h3>
+                <p>{{ question.answer }}</p>
+                <button :data-score="question.level" v-on:click="questionAnswer(1)">Correct !</button:data-qid="question.id"> 
+                <button data-score="0" v-on:click="questionAnswer(0)">Wrong Answer !</button v-on:click="questionAnswer(1)">
+            </div>
+
         </main>
     </body>
 </html>
