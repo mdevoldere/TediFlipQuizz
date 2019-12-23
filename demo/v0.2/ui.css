@@ -169,7 +169,6 @@ body {
 }
 
 #config {
-    background-color: var(--bg-color);
     flex-direction: column;
     align-items: center;
 }
@@ -178,9 +177,28 @@ body {
     width: auto;
 }
 
-#config input, #config button {
-    padding: 0.3em 1em;
-    font-size:1.5em;
+#config legend {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#config fieldset {
+    padding: 1em;
+    text-align: left;
+    border: 0;
+    color: var(--color);
+    background-color: var(--bg-color);
+    width: 800px;
+}
+
+#config fieldset fieldset {
+    margin: 0.5em;
+    width: 80%;
+}
+
+#config input, #config button, #config select {
+    padding: 0.3em 0.5em;
+    font-size:1.2em;
     font-weight: bold;
     border: 2px solid #111;
 }

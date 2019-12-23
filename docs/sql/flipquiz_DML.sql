@@ -2,13 +2,13 @@
 
 
 INSERT INTO fp_quizzes
-(`quizz_id`, `quizz_theme`)
+(`quiz_id`, `quiz_theme`)
 VALUES 
 (1, 'Quiz Test 1'),
 (2, 'Quiz Test 2');
 
 INSERT INTO fp_categories 
-(category_id, category_name, category_description, quizz_id) 
+(category_id, category_name, category_description, quiz_id) 
 VALUES 
 (1, 'C#', 'Questions about c#', 1),
 (2, 'ASP.NET', 'ASP.NET attacks !', 1),

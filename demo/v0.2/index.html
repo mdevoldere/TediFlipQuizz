@@ -3,39 +3,35 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tedi Flip Quiz</title>
-        <link rel="stylesheet" href="assets/ui.css">
+        <link rel="stylesheet" href="assets/game.css">
         <script src="assets/vue.js"></script>
-        <script src="data/dbdata.js"></script>
         <script src="assets/models.js"></script>
         <script src="assets/db.js"></script>
         <script src="assets/game.js"></script>
+        <script src="assets/app.js"></script>
         <script src="assets/ui.js"></script>
+        <style>
+
+        </style>
     </head>
     <body>
-        <main id="app">
-            
+        <main id="app" class="game">
             <section id="top">
-                <h1>{{ title }}</h1>
+                <h1>{{ game.quiz.quiz_theme }}</h1>
                 <ul>
-                    <li v-for="team in quiz.teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }} ({{ team.score }} pts)</a></li>
+                    <li v-for="team in game.teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }} ({{ team.score }} pts)</a></li>
                 </ul>
                 <nav>
                     <a href="#" id="end">End Quiz</a>
                 </nav>
             </section>
 
-            <section id="quiz" class="container">
-                <article class="question" v-for="category in quiz.categories">
-                    <header>{{ category.name }}</header>
-                    <div v-bind:class="[question.isAvailable ? '' : 'disabled']" v-for="question in category.questions">
-                        <p v-on:click="questionClick" :data-qid="question.id" :data-level="question.level">
-                            {{ question.level }}
-                        </p>
-                    </div>
-                </article>
+            <section id="message">
+                {{ message }}
             </section>
 
-            <section id="config" class="container active">
+
+            <section id="config" class="active">
                 <h2>Configuration</h2>
                 <fieldset>
                     <legend>Game mode</legend>
@@ -46,7 +42,7 @@
                         <option value="3">3 teams</option>
                         <option value="4">4 teams</option>
                     </select>
-                    <fieldset v-for="(team) in quiz.teams">
+                    <fieldset v-for="team in game.teams">
                         <legend>Team #{{ team.id }} Name:</legend>
                         <input v-model="team.name">
                     </fieldset>
@@ -55,8 +51,8 @@
                 <fieldset>
                     <legend>Quiz configuration</legend>
                     <fieldset>
-                        <legend>Team #{{ team.id }} Name:</legend>
-                        <input v-model="team.name">
+                        <legend>Colors</legend>
+                        <input type="color">
                     </fieldset>
                 </fieldset>
                 
@@ -64,16 +60,6 @@
                 <button v-on:click="startQuiz">Start</button>
             </section>
 
-            <section id="message" class="">
-                {{ quiz.message }}
-            </section>
-
-            <div id="currentQuestion">
-                <h3>{{ question.content }}</h3>
-                <p>{{ question.answer }}</p>
-                <button :data-score="question.level" v-on:click="questionAnswer(1)">Correct !</button:data-qid="question.id"> 
-                <button data-score="0" v-on:click="questionAnswer(0)">Wrong Answer !</button v-on:click="questionAnswer(1)">
-            </div>
 
         </main>
     </body>

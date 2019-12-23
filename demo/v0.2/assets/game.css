@@ -1,0 +1,134 @@
+:root {
+    --color: #000;
+    --hover: #339;
+    --bg-base: #fff;
+    --bg-color: #ffffff44;
+    --bg-hover: #ffffff99;
+    --bg-active: #ccffccaa;
+    --top: #ccc;
+    --bg-top: #11111133;
+    --bg-url: url('uj.jpg');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    padding: 0;
+    background-color: var(--bg-base);
+    color: var(--color);
+    background-image: var(--bg-url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.game {
+    height: 100%;
+    width: 100%;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+.game > section {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+#top {
+    width: 100%;
+    height: 50px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 3;
+    color: var(--top);
+    background-color: var(--bg-top);
+}
+
+#top > * {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#top > h1 {
+    text-align: left;
+    padding: 10px;
+    flex: 1;
+}
+
+#top > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    list-style: none;
+    flex: 3;
+}
+
+#top > ul > li {
+    display: inline-block;
+    margin: 0 1em;
+    text-transform: uppercase;
+}
+
+#top > nav {
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+#top a {
+    display: inline-block;
+    padding: 1em;
+    color: var(--top);
+    background-color: var(--bg-top);
+    text-decoration: none;
+    transition: all ease 1s;
+}
+
+#top a:hover {
+    color: var(--hover);
+    background-color: var(--bg-color);
+}
+
+#top a.active {
+    color: var(--color);
+    background-color: var(--bg-active);
+}
+
+#message {
+    text-align: center;
+    font-size: 3em;
+}
+
+#config {
+    flex-direction: column;
+    align-items: center;
+}
+
+#config > * {
+    width: 600px;
+    max-width: 100%;
+}
