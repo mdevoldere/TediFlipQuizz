@@ -1,0 +1,343 @@
+const dbdata = {
+    "quizzes": [
+        {
+        "quizz_id": "1",
+        "quizz_theme": "Quiz Test 1",
+        "quizz_textcolor": "000000",
+        "quizz_backcolor": "FFFFFF"
+        }, 
+        {
+            "quizz_id": "2",
+            "quizz_theme": "Quiz Test 2",
+            "quizz_textcolor": "000000",
+            "quizz_backcolor": "FFFFFF"
+        }
+    ],
+    "categories": [
+        {
+        "category_id": "1",
+        "category_name": "C#",
+        "category_description": "Questions about c#",
+        "quizz_id": "1"
+        }, 
+        {
+            "category_id": "2",
+            "category_name": "ASP.NET",
+            "category_description": "ASP.NET attacks !",
+            "quizz_id": "1"
+        }, 
+        {
+            "category_id": "3",
+            "category_name": "Javascript",
+            "category_description": "Javascript is not Java",
+            "quizz_id": "1"
+        }, 
+        {
+            "category_id": "4",
+            "category_name": "UML",
+            "category_description": "UML is not ULM",
+            "quizz_id": "2"
+        }, 
+        {
+            "category_id": "5",
+            "category_name": "Merise",
+            "category_description": "Merise time !",
+            "quizz_id": "2"
+        }, 
+        {
+            "category_id": "6",
+            "category_name": "Movies",
+            "category_description": "French movies",
+            "quizz_id": "2"
+        }, 
+        {
+            "category_id": "7",
+            "category_name": "Taratata",
+            "category_description": "Music is life",
+            "quizz_id": "2"
+        }, 
+        {
+            "category_id": "8",
+            "category_name": "English Basics",
+            "category_description": "Beginners",
+            "quizz_id": "2"
+        }, 
+        {
+            "category_id": "9",
+            "category_name": "Alsace",
+            "category_description": "Jolie r\u00e9gion",
+            "quizz_id": "2"
+        }
+    ],
+    "questions": [{
+        "question_id": "1",
+        "question_content": "What is the answer to the question #1 ?",
+        "question_answer": "Anwser #1",
+        "question_level": "1",
+        "category_id": "1"
+    }, {
+        "question_id": "2",
+        "question_content": "What is the answer to the question #2 ?",
+        "question_answer": "Anwser #2",
+        "question_level": "2",
+        "category_id": "1"
+    }, {
+        "question_id": "3",
+        "question_content": "What is the answer to the question #3 ?",
+        "question_answer": "Anwser #3",
+        "question_level": "3",
+        "category_id": "1"
+    }, {
+        "question_id": "4",
+        "question_content": "What is the answer to the question #4 ?",
+        "question_answer": "Anwser #4",
+        "question_level": "4",
+        "category_id": "1"
+    }, {
+        "question_id": "5",
+        "question_content": "What is the answer to the question #5 ?",
+        "question_answer": "Anwser #5",
+        "question_level": "5",
+        "category_id": "1"
+    }, {
+        "question_id": "6",
+        "question_content": "What is the answer to the question #6 ?",
+        "question_answer": "Anwser #6",
+        "question_level": "1",
+        "category_id": "2"
+    }, {
+        "question_id": "7",
+        "question_content": "What is the answer to the question #7 ?",
+        "question_answer": "Anwser #7",
+        "question_level": "2",
+        "category_id": "2"
+    }, {
+        "question_id": "8",
+        "question_content": "What is the answer to the question #8 ?",
+        "question_answer": "Anwser #8",
+        "question_level": "3",
+        "category_id": "2"
+    }, {
+        "question_id": "9",
+        "question_content": "What is the answer to the question #9 ?",
+        "question_answer": "Anwser #9",
+        "question_level": "4",
+        "category_id": "2"
+    }, {
+        "question_id": "10",
+        "question_content": "What is the answer to the question #10 ?",
+        "question_answer": "Anwser #10",
+        "question_level": "5",
+        "category_id": "2"
+    }, {
+        "question_id": "11",
+        "question_content": "What is the answer to the question #11 ?",
+        "question_answer": "Anwser #11",
+        "question_level": "1",
+        "category_id": "3"
+    }, {
+        "question_id": "12",
+        "question_content": "What is the answer to the question #12 ?",
+        "question_answer": "Anwser #12",
+        "question_level": "2",
+        "category_id": "3"
+    }, {
+        "question_id": "13",
+        "question_content": "What is the answer to the question #13 ?",
+        "question_answer": "Anwser #13",
+        "question_level": "3",
+        "category_id": "3"
+    }, {
+        "question_id": "14",
+        "question_content": "What is the answer to the question #14 ?",
+        "question_answer": "Anwser #14",
+        "question_level": "4",
+        "category_id": "3"
+    }, {
+        "question_id": "15",
+        "question_content": "What is the answer to the question #15 ?",
+        "question_answer": "Anwser #15",
+        "question_level": "5",
+        "category_id": "3"
+    }, {
+        "question_id": "16",
+        "question_content": "What is the answer to the question #16 ?",
+        "question_answer": "Anwser #16",
+        "question_level": "1",
+        "category_id": "4"
+    }, {
+        "question_id": "17",
+        "question_content": "What is the answer to the question #17 ?",
+        "question_answer": "Anwser #17",
+        "question_level": "2",
+        "category_id": "4"
+    }, {
+        "question_id": "18",
+        "question_content": "What is the answer to the question #18 ?",
+        "question_answer": "Anwser #18",
+        "question_level": "3",
+        "category_id": "4"
+    }, {
+        "question_id": "19",
+        "question_content": "What is the answer to the question #19 ?",
+        "question_answer": "Anwser #19",
+        "question_level": "4",
+        "category_id": "4"
+    }, {
+        "question_id": "20",
+        "question_content": "What is the answer to the question #20 ?",
+        "question_answer": "Anwser #20",
+        "question_level": "5",
+        "category_id": "4"
+    }, {
+        "question_id": "21",
+        "question_content": "What is the answer to the question #21 ?",
+        "question_answer": "Anwser #21",
+        "question_level": "1",
+        "category_id": "5"
+    }, {
+        "question_id": "22",
+        "question_content": "What is the answer to the question #22 ?",
+        "question_answer": "Anwser #22",
+        "question_level": "2",
+        "category_id": "5"
+    }, {
+        "question_id": "23",
+        "question_content": "What is the answer to the question #23 ?",
+        "question_answer": "Anwser #23",
+        "question_level": "3",
+        "category_id": "5"
+    }, {
+        "question_id": "24",
+        "question_content": "What is the answer to the question #24 ?",
+        "question_answer": "Anwser #24",
+        "question_level": "4",
+        "category_id": "5"
+    }, {
+        "question_id": "25",
+        "question_content": "What is the answer to the question #25 ?",
+        "question_answer": "Anwser #25",
+        "question_level": "5",
+        "category_id": "5"
+    }, {
+        "question_id": "26",
+        "question_content": "What is the answer to the question #26 ?",
+        "question_answer": "Anwser #26",
+        "question_level": "1",
+        "category_id": "6"
+    }, {
+        "question_id": "27",
+        "question_content": "What is the answer to the question #27 ?",
+        "question_answer": "Anwser #27",
+        "question_level": "2",
+        "category_id": "6"
+    }, {
+        "question_id": "28",
+        "question_content": "What is the answer to the question #28 ?",
+        "question_answer": "Anwser #28",
+        "question_level": "3",
+        "category_id": "6"
+    }, {
+        "question_id": "29",
+        "question_content": "What is the answer to the question #29 ?",
+        "question_answer": "Anwser #29",
+        "question_level": "4",
+        "category_id": "6"
+    }, {
+        "question_id": "30",
+        "question_content": "What is the answer to the question #30 ?",
+        "question_answer": "Anwser #30",
+        "question_level": "5",
+        "category_id": "6"
+    }, {
+        "question_id": "31",
+        "question_content": "What is the answer to the question #31 ?",
+        "question_answer": "Anwser #31",
+        "question_level": "1",
+        "category_id": "7"
+    }, {
+        "question_id": "32",
+        "question_content": "What is the answer to the question #32 ?",
+        "question_answer": "Anwser #32",
+        "question_level": "2",
+        "category_id": "7"
+    }, {
+        "question_id": "33",
+        "question_content": "What is the answer to the question #33 ?",
+        "question_answer": "Anwser #33",
+        "question_level": "3",
+        "category_id": "7"
+    }, {
+        "question_id": "34",
+        "question_content": "What is the answer to the question #34 ?",
+        "question_answer": "Anwser #34",
+        "question_level": "4",
+        "category_id": "7"
+    }, {
+        "question_id": "35",
+        "question_content": "What is the answer to the question #35 ?",
+        "question_answer": "Anwser #35",
+        "question_level": "5",
+        "category_id": "7"
+    }, {
+        "question_id": "36",
+        "question_content": "What is the answer to the question #36 ?",
+        "question_answer": "Anwser #36",
+        "question_level": "1",
+        "category_id": "7"
+    }, {
+        "question_id": "37",
+        "question_content": "What is the answer to the question #37 ?",
+        "question_answer": "Anwser #37",
+        "question_level": "2",
+        "category_id": "8"
+    }, {
+        "question_id": "38",
+        "question_content": "What is the answer to the question #38 ?",
+        "question_answer": "Anwser #38",
+        "question_level": "3",
+        "category_id": "8"
+    }, {
+        "question_id": "39",
+        "question_content": "What is the answer to the question #39 ?",
+        "question_answer": "Anwser #39",
+        "question_level": "4",
+        "category_id": "8"
+    }, {
+        "question_id": "40",
+        "question_content": "What is the answer to the question #40 ?",
+        "question_answer": "Anwser #40",
+        "question_level": "5",
+        "category_id": "8"
+    }, {
+        "question_id": "41",
+        "question_content": "What is the answer to the question #41 ?",
+        "question_answer": "Anwser #41",
+        "question_level": "1",
+        "category_id": "9"
+    }, {
+        "question_id": "42",
+        "question_content": "What is the answer to the question #42 ?",
+        "question_answer": "Anwser #42",
+        "question_level": "2",
+        "category_id": "9"
+    }, {
+        "question_id": "43",
+        "question_content": "What is the answer to the question #43 ?",
+        "question_answer": "Anwser #43",
+        "question_level": "3",
+        "category_id": "9"
+    }, {
+        "question_id": "44",
+        "question_content": "What is the answer to the question #44 ?",
+        "question_answer": "Anwser #44",
+        "question_level": "4",
+        "category_id": "9"
+    }, {
+        "question_id": "45",
+        "question_content": "What is the answer to the question #45 ?",
+        "question_answer": "Anwser #45",
+        "question_level": "5",
+        "category_id": "9"
+    }]
+};

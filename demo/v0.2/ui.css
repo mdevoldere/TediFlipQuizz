@@ -1,0 +1,254 @@
+:root {
+    --color: #000;
+    --hover: #339;
+    --bg-base: #fff;
+    --bg-color: #ffffff44;
+    --bg-hover: #ffffff99;
+    --bg-active: #ccffccaa;
+    --top: #ccc;
+    --bg-top: #11111133;
+    --bg-url: url('uj.jpg');
+}
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-base);
+    color: var(--color);
+    background-image: var(--bg-url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-color);
+}
+
+#top {
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    color: var(--top);
+    background-color: var(--bg-top);
+    font-weight: bold;
+}
+
+#top > * {
+    height: 100%;
+}
+
+#top > h1 {
+    text-align: left;
+    flex: 1;
+    padding: 10px;
+}
+
+#top > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 3;
+}
+
+#top > ul > li {
+    display: inline-block;
+    margin: 0 1em;
+    text-transform: uppercase;
+}
+
+#top > nav {
+    flex: 1;
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+#top a, #top a {
+    display: inline-block;
+    padding: 1em;
+    color: var(--top);
+    background-color: var(--bg-top);
+    text-decoration: none;
+    transition: all ease 1s;
+}
+
+#top a:hover {
+    color: var(--hover);
+    background-color: var(--bg-color);
+}
+
+#top a.active {
+    color: var(--color);
+    background-color: var(--bg-active);
+}
+
+
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.container > * {
+    margin: 1em 0;
+    width: 15%;
+    text-align:center;
+}
+
+.question > * {
+    margin: 0 0 0.5em 0;
+    padding: 0.5em;
+    width: 100%;
+    text-align:center;
+    height: 2.2em;
+    font-size: 2em;
+    font-weight: bold;
+    border: 1px solid #111;
+    color:var(--overlay);
+    background-color: var(--bg-color);
+    transition: all ease 1s;
+}
+
+.question div:not(.disabled):hover {
+    border: 1px solid #ffffff99;
+    color:var(--hover);
+    background-color: var(--bg-hover);
+}
+
+.question header {
+    height: auto;
+    font-size: 1.5em;
+}
+
+
+
+.question p {
+    transition: all ease 5s;
+    cursor: pointer;
+}
+
+.question .disabled {
+    border-color: transparent;
+    color:transparent;
+    background-color: transparent;
+    cursor: initial;
+}
+
+.container {
+    display:none;
+}
+
+.container.active {
+    display:flex;
+}
+
+#config {
+    background-color: var(--bg-color);
+    flex-direction: column;
+    align-items: center;
+}
+
+#config > * {
+    width: auto;
+}
+
+#config input, #config button {
+    padding: 0.3em 1em;
+    font-size:1.5em;
+    font-weight: bold;
+    border: 2px solid #111;
+}
+
+#config button {
+    cursor: pointer;
+}
+
+#message {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    padding: 5px;
+    color: var(--color);
+    background-color: var(--bg-color);
+    text-align: center;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+#message.success {
+    background-color: #99CC99AA;
+}
+
+#currentQuestion {
+    display:none;
+    position:absolute;
+    left:0;
+    top: 0;
+    padding: 0;
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--bg-base);
+    background-color: var(--color);
+    /*transition: all ease 1s;*/
+    height:0;
+    width:0;
+    width:100vw;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+#currentQuestion.active {
+    display:block;
+    padding: 5em;
+}
+
+#currentQuestion button {
+    margin: 1em;
+    padding: 1em;
+    background-color: var(--color);
+    color: var(--bg-base);
+    border: 2px solid #9C9;
+}
+
+#currentQuestion button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 3px 3px #090;
+}
+
+#currentQuestion button[data-score="0"] {
+    border: 2px solid #C99;
+}
+
+#currentQuestion button[data-score="0"]:hover {
+    box-shadow: 0 0 3px 3px #900;
+}

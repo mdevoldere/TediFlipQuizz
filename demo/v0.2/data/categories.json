@@ -1,0 +1,46 @@
+[{
+    "category_id": "1",
+    "category_name": "C#",
+    "category_description": "Questions about c#",
+    "quizz_id": "1"
+}, {
+    "category_id": "2",
+    "category_name": "ASP.NET",
+    "category_description": "ASP.NET attacks !",
+    "quizz_id": "1"
+}, {
+    "category_id": "3",
+    "category_name": "Javascript",
+    "category_description": "Javascript is not Java",
+    "quizz_id": "1"
+}, {
+    "category_id": "4",
+    "category_name": "UML",
+    "category_description": "UML is not ULM",
+    "quizz_id": "2"
+}, {
+    "category_id": "5",
+    "category_name": "Merise",
+    "category_description": "Merise time !",
+    "quizz_id": "2"
+}, {
+    "category_id": "6",
+    "category_name": "Movies",
+    "category_description": "French movies",
+    "quizz_id": "2"
+}, {
+    "category_id": "7",
+    "category_name": "Taratata",
+    "category_description": "Music is life",
+    "quizz_id": "2"
+}, {
+    "category_id": "8",
+    "category_name": "English Basics",
+    "category_description": "Beginners",
+    "quizz_id": "2"
+}, {
+    "category_id": "9",
+    "category_name": "Alsace",
+    "category_description": "Jolie r\u00e9gion",
+    "quizz_id": "2"
+}]

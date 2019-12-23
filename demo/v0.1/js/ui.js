@@ -1,24 +1,19 @@
 
 class Ui
 {
-
-  static getConfigContainer()
-  {
+  static getConfigContainer() {
       return document.querySelector('#config');
   }
 
-  static getQuizContainer()
-  {
+  static getQuizContainer() {
       return document.querySelector('#quiz');
   }
 
-  static getQuestionContainer()
-  {
+  static getQuestionContainer() {
       return document.querySelector('#currentQuestion');
   }
 
-  static displayQuestion()
-  {
+  static displayQuestion() {
     var c =  getQuestionElement(this.dataset.qid);
     c.classList.add("active");
     this.removeEventListener("click", Ui.displayQuestion);
@@ -35,7 +30,24 @@ window.addEventListener("DOMContentLoaded", function(event) {
         title: "Tedi FlipQuiz",
         message: 'Welcome',
         quiz: new Quiz(2),
-        question: new Question(1, 0 , "Welcome")
+        question: new Question(1, 0 , 0, "Welcome")
+    },
+    created: function() {
+      //var ajx = new XMLHttpRequest();
+      //ajx.open('GET', './data/flipquiz.json', true);
+      //ajx.onload = function() {
+      //    if (this.status === 200) {
+      //        var json = JSON.parse(this.responseText);
+      //        console.log(json.questions[0]);
+              /*for(var i=0; i < json.quizzes.length; i++)
+              {
+                
+                  apiList.innerHTML += '<option value="' + json[i] +'">' + json[i] +'</option>';
+              }*/
+      //    }
+      //};
+
+      //ajx.send();
     },
     methods: {
       startQuiz: function(event) {
@@ -58,6 +70,10 @@ window.addEventListener("DOMContentLoaded", function(event) {
       } 
     }
   });
+
+
+
+  
 /*
   const elems = document.querySelectorAll("#flipquiz article div");
 
