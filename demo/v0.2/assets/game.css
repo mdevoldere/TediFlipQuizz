@@ -1,134 +1,197 @@
-:root {
-    --color: #000;
-    --hover: #339;
-    --bg-base: #fff;
-    --bg-color: #ffffff44;
-    --bg-hover: #ffffff99;
-    --bg-active: #ccffccaa;
-    --top: #ccc;
-    --bg-top: #11111133;
-    --bg-url: url('uj.jpg');
+/* TOP AREA */
+
+.top {
+    justify-content:space-between;
+    text-transform: uppercase;
+    color: var(--top);
+    background-color: var(--bg-top);
 }
 
-* {
-    box-sizing: border-box;
+.top > h1 {
+    padding: 10px;
+    text-align: left;
+    width:300px;
 }
 
-body {
-    height: 100vh;
-    width: 100vw;
-    margin:0;
-    padding: 0;
-    background-color: var(--bg-base);
+.top .teams {
+    flex: 2;
+}
+
+.top .menu {
+    width:300px;
+    justify-content: flex-end;
+}
+
+.top a {
+    position: relative;
+    display: inline-block;
+    height:100%;
+    margin: 0 10px;
+    padding: 15px;
+    color: var(--bg-top);
+    background-color: var(--top);
+    text-decoration: none;
+    transition: all ease 1s;
+    border: 2px solid transparent;
+}
+
+.top a:hover {
+    color: var(--top);
+    background-color: var(--bg-top);
+}
+
+.top a[data-tid="1"] {
+    color: #fff;
+    border-color: #0099CC;
+    background-color: #0099CC66;
+}
+.top a[data-tid="2"] {
+    color: #fff;
+    border-color: #CC0000;
+    background-color: #CC000066;
+}
+.top a[data-tid="3"] {
+    color: #fff;
+    border-color: #CCCC00;
+    background-color: #CCCC0066;
+}
+.top a[data-tid="4"] {
+    color: #fff;
+    border-color: #9944CC;
+    background-color: #9944CC66;
+}
+
+.top a.active, .top a:active {
+    background-color: var(--bg-active);
+    box-shadow: 0px -10px 20px 15px #009900;
+    /*transform: scale(1.5);*/
+}
+
+.teams a {
+    width: 250px;
+}
+
+.teams a span {
+    position: absolute;
+    top:0;
+    right:0;
+    height: 100%;
+    padding: 1em;
+    background-color: #00000033;
+}
+
+/* GAME AREA */
+
+.message, .game {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
     color: var(--color);
-    background-image: var(--bg-url);
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    font-weight: bold;
+    background-color: var(--bg-color);
+}
+
+.message {
+    padding-top: 5px;
+    text-align: center;
+    font-size: 2.2em;
 }
 
 .game {
     height: 100%;
-    width: 100%;
-    color: var(--color);
-    background-color: var(--bg-color);
-}
-
-.game > section {
-    width: 1200px;
     max-width: 100%;
-    margin: 0 auto;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
-    color: var(--color);
-    background-color: var(--bg-color);
 }
 
-#top {
-    width: 100%;
-    height: 50px;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    flex: 3;
-    color: var(--top);
-    background-color: var(--bg-top);
-}
-
-#top > * {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-#top > h1 {
-    text-align: left;
-    padding: 10px;
-    flex: 1;
-}
-
-#top > ul {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
-    list-style: none;
-    flex: 3;
-}
-
-#top > ul > li {
-    display: inline-block;
-    margin: 0 1em;
-    text-transform: uppercase;
-}
-
-#top > nav {
-    display:flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-#top a {
-    display: inline-block;
-    padding: 1em;
-    color: var(--top);
-    background-color: var(--bg-top);
-    text-decoration: none;
+.game > article {
+    margin-top: 1em;
+    max-width: 100%;
     transition: all ease 1s;
 }
 
-#top a:hover {
-    color: var(--hover);
+
+.game > article > h2 {
+    margin:0 auto 10px auto;
+    padding: 10px;
+    color: var(--color);
     background-color: var(--bg-color);
+
 }
 
-#top a.active {
+.game > article > h3 {
+    margin:0 auto 10px auto;
+    padding: 10px;
+    color: var(--color);
+    background-color: var(--bg-color);
+
+}
+
+/* CONFIG */
+
+#config {
+    margin-top: 1000%;
+}
+
+#config.active {
+    margin-top:0;
+}
+
+#config .row {
+    justify-content: flex-start;
+}
+
+#configTeams .row {
+    justify-content: flex-end;
+}
+
+#config fieldset {
+    border: 1px solid #ccc;
+    background-color: var(--bg-color);
+    width: 30%;
+    margin: 1%;
+    height: 500px;
+}
+
+#config input {
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #111;
+}
+
+
+#config button {
+    margin-top: -10px;
+    margin-right: -10px;
+    width: 125px;
+    float:right;
+    padding: 10px;
+    border: 0;
+    font-size:1em;
     color: var(--color);
     background-color: var(--bg-active);
 }
-
-#message {
-    text-align: center;
-    font-size: 3em;
+#config button:hover { 
+    color: var(--bg-active);
+    background-color: var(--bg);
+    cursor: pointer;
 }
 
-#config {
-    flex-direction: column;
-    align-items: center;
+.config-team {
+    color: var(--color);
+    background-color: var(--bg-color);
+    margin: 5% 2%;
 }
 
-#config > * {
-    width: 600px;
-    max-width: 100%;
+
+
+
+.config-team h3 {
+    margin:0;
+    padding: 0 5px;
+    font-size: 0.8em;
 }
+
+.config-team input {
+    display: inline-block;
+    margin: 5px auto;
+    width: 90%;
+}
+

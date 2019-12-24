@@ -10,16 +10,7 @@ class Team
 
 class Question 
 {
-    constructor() {
-        this.question_id = 0;
-        this.category_id = 0;
-        this.question_level = 100;
-        this.question_content = "Question";
-        this.question_answer = "";
-        this.isAvailable = true;
-    }
-
-    hydrate(q){
+    constructor(q){
         this.question_id = parseInt(q.question_id);
         this.category_id = parseInt(q.category_id);
         this.question_level = (parseInt(q.question_level)*100);
@@ -31,14 +22,7 @@ class Question
 
 class Category 
 {
-    constructor(){
-        this.category_id = 0;
-        this.quiz_id = 0;
-        this.category_name = "Category";
-        this.category_description = "";
-    }
-
-    hydrate(c){
+    constructor(c){
         this.category_id = parseInt(c.category_id);
         this.quiz_id = parseInt(c.quizz_id);
         this.category_name = c.category_name;
@@ -49,11 +33,10 @@ class Category
 class Quiz
 {
     constructor() {
-        this.quizz_id = 0;
-        this.quizz_theme = "Tedi FlipQuizz";
-        this.textcolor = "#000000";
-        this.backcolor = "#FFFFFF";
-        this.backimage = 0;
+        this.quiz_id = 0;
+        this.quiz_theme = "Tedi FlipQuizz";
+        this.quiz_textcolor = "#000000";
+        this.quiz_backcolor = "#FFFFFF";
     }
 
     init(id) {
@@ -61,11 +44,10 @@ class Quiz
     }
 
     hydrate(q)  {
-        this.quizz_id = parseInt(q.quizz_id);
-        this.quizz_theme = q.quizz_theme;
-        this.textcolor = q.quizz_textcolor;
-        this.backcolor = q.quizz_backcolor;
-        this.backimage = q.quizz_id;
+        this.quiz_id = parseInt(q.quiz_id);
+        this.quiz_theme = q.quiz_theme;
+        this.quiz_textcolor = q.quiz_textcolor;
+        this.quiz_backcolor = q.quiz_backcolor;
 
         this.teams = [];
 
@@ -77,6 +59,11 @@ class Quiz
         this.activeTeam.isActive = true;*/
 
         this.message = "Welcome !";
+    }
+
+    get style()
+    {
+        return "color: " + this.quiz_textcolor + "; background-color: " + this.quiz_backcolor + ";";
     }
 
     get activeTeam() {

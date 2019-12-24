@@ -3,27 +3,47 @@ const appData = {
     data: {
         title: "Tedi FlipQuiz",
         message: 'Welcome',
-        game: new Game(),
-        
+        gameReady: false,
+        quizzesLoaded: false,
+        game: new Game(),        
     },
     created: function() {
-        
-        this.game.init();
+
     },
     mounted: function() {
         
-        this.game.init();
+    },
+    watch: {
+      game: function (val) {
+        
+      },
     },
     methods: {
-        selectTeams: function(event) {
-
+        setTeams: function(_nb, event) {
+            //console.log(event);
+            this.game.setTeams(_nb);
+            if(this.game.teams.length < 1) {
+                this.gameReady = false;
+            }
+            if(this.quizzesLoaded === false) {
+                this.game.db.getQuizzes();
+                this.quizzesLoaded = true;
+            }
+            
+            //console.log(this.game.db.quizzes);
+        },
+        setQuiz: function(){
+            this.game.setQuiz(event.target.value);
+            this.gameReady = true;
         },
         startQuiz: function(event) {
+
         },
         questionClick : function(event) {
           
         },
         questionAnswer : function(status, event) {
+
         } 
     }
     

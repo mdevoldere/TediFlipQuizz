@@ -6,16 +6,32 @@ class Game
         this.quiz = new Quiz();
         this.categories = [];
         this.questions = [];
+        this.activeTeam = 0;
+        this.activeQuestion = 0;
+        var database = this.db;
+        setTimeout(function() { database.init() }, 2000);
+        //this.db.init();
     }
 
-    init() {
-        this.db.init(this.loaded);
-    }
+    setTeams(_nb)
+    {
+        _nb = parseInt(_nb);
 
-    loaded(_db) {
-        console.log("Game DB loaded !");
-        console.log(_db);
-        console.log("Game loaded !");
+        if(_nb === 0) {
+            this.teams.pop();
+        }
+        else {
+            if(this.teams.length > 3) {
+                return;
+            }
+            
+            let _id = this.teams.length+1;
+            this.teams.push(new Team(_id, ('Team #' + _id)));
+            this.teams[0].score = 3500;
+        }
+
+
+        console.log("Game Mode: " + this.teams.length + " teams.");
     }
 
     setQuiz(_id) {

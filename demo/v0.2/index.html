@@ -3,6 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tedi Flip Quiz</title>
+        <link rel="stylesheet" href="assets/gui.css">
         <link rel="stylesheet" href="assets/game.css">
         <script src="assets/vue.js"></script>
         <script src="assets/models.js"></script>
@@ -10,55 +11,60 @@
         <script src="assets/game.js"></script>
         <script src="assets/app.js"></script>
         <script src="assets/ui.js"></script>
-        <style>
-
-        </style>
     </head>
     <body>
-        <main id="app" class="game">
-            <section id="top">
+        <main id="app" class="app">
+            <section id="top" class="row top">
                 <h1>{{ game.quiz.quiz_theme }}</h1>
-                <ul>
-                    <li v-for="team in game.teams"><a v-bind:class="{ active: team.isActive }" href="#">{{ team.name }} ({{ team.score }} pts)</a></li>
-                </ul>
-                <nav>
-                    <a href="#" id="end">End Quiz</a>
-                </nav>
+                <div class="row teams">
+                    <a v-for="team in game.teams" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
+                </div>
+                <div class="row menu">
+                    <a href="" id="end">Quit</a>
+                </div>
+            </section>
+            <section id="message" class="message">
+                <span v-if="game.db.ready">{{ message }}</span v-if="game.db.ready">
+                <span class="animate" v-else>Loading...</span>
+            </section>
+            <section id="game" class="game">
+                <article id="config" v-bind:class="{ active: game.db.ready }">
+                    <h2>
+                        Configuration
+                        <button v-if="gameReady" v-on:click="startQuiz">Start</button>
+                    </h2>
+                    <div class="row">
+                        <fieldset id="configTeams">
+                            <legend>Number of teams</legend>
+                            <div class="row">
+                                <a class="btn btn-danger" href="#" v-on:click="setTeams(0)" v-if="game.teams.length > 0">-</a>
+                                <a class="btn btn-success" href="#" v-on:click="setTeams(1)">+</a>
+                                </div>
+                            <div class="config-team" v-for="team in game.teams">
+                                <h3>Team #{{ team.id }}</h3>
+                                <input v-model="team.name">
+                            </div>
+                        </fieldset>
+    
+                        <fieldset v-if="game.teams.length > 0" id="configQuiz">
+                            <legend>Quiz selection</legend>
+                            
+                            <div v-for="quiz in game.db.quizzes">
+                                <input :value="quiz.quiz_id" type="radio" name="gq" v-on:click="setQuiz"> 
+                                {{ quiz.quiz_theme }}
+                            </div>
+                        </fieldset>                       
+                    </div>
+                    
+                                      
+                    
+                </article v-if="game.db.ready">
             </section>
 
-            <section id="message">
-                {{ message }}
-            </section>
+            
 
 
-            <section id="config" class="active">
-                <h2>Configuration</h2>
-                <fieldset>
-                    <legend>Game mode</legend>
-                    <select v-on:change="selectTeams">
-                        <option value="0">Please select a value</option>
-                        <option value="1">1 team</option>
-                        <option value="2">2 teams</option>
-                        <option value="3">3 teams</option>
-                        <option value="4">4 teams</option>
-                    </select>
-                    <fieldset v-for="team in game.teams">
-                        <legend>Team #{{ team.id }} Name:</legend>
-                        <input v-model="team.name">
-                    </fieldset>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Quiz configuration</legend>
-                    <fieldset>
-                        <legend>Colors</legend>
-                        <input type="color">
-                    </fieldset>
-                </fieldset>
-                
-                
-                <button v-on:click="startQuiz">Start</button>
-            </section>
+            
 
 
         </main>
