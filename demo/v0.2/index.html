@@ -14,31 +14,34 @@
     </head>
     <body>
         <main id="app" class="app">
-            <section id="top" class="row top">
+            <section id="top" class="row between top">
                 <h1>{{ game.quiz.quiz_theme }}</h1>
                 <div class="row teams">
                     <a v-for="team in game.teams" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
                 </div>
-                <div class="row menu">
+                <div class="row end menu">
                     <a href="" id="end">Quit</a>
                 </div>
             </section>
+
             <section id="message" class="message">
                 <span v-if="game.db.ready">{{ message }}</span v-if="game.db.ready">
                 <span class="animate" v-else>Loading...</span>
             </section>
+
             <section id="game" class="game">
-                <article id="config" v-bind:class="{ active: game.db.ready }">
-                    <h2>
-                        Configuration
+
+                <article id="config" v-bind:class="{ active: game.db.ready }" v-if="gameConfig">
+                    <h2 class="row between">
+                        <span>Configuration</span>
                         <button v-if="gameReady" v-on:click="startQuiz">Start</button>
                     </h2>
-                    <div class="row">
+                    <div class="row start">
                         <fieldset id="configTeams">
                             <legend>Number of teams</legend>
                             <div class="row">
-                                <a class="btn btn-danger" href="#" v-on:click="setTeams(0)" v-if="game.teams.length > 0">-</a>
-                                <a class="btn btn-success" href="#" v-on:click="setTeams(1)">+</a>
+                                <a class="btn danger" href="#" v-on:click="setTeams(0)" v-if="game.teams.length > 0">-</a>
+                                <a class="btn success" href="#" v-on:click="setTeams(1)">+</a>
                                 </div>
                             <div class="config-team" v-for="team in game.teams">
                                 <h3>Team #{{ team.id }}</h3>
@@ -53,13 +56,28 @@
                                 <input :value="quiz.quiz_id" type="radio" name="gq" v-on:click="setQuiz"> 
                                 {{ quiz.quiz_theme }}
                             </div>
-                        </fieldset>                       
+                        </fieldset>   
+                        
+                        <fieldset v-if="gameReady" id="configFinal">
+                            <legend>{{ game.quiz.quiz_theme }}</legend>
+                            <h3>Catégories: </h3>
+                            <div v-for="cat in game.categories"> 
+                                {{ cat.category_name }}<br>
+                            </div>
+                        </fieldset>
                     </div>
-                    
-                                      
-                    
-                </article v-if="game.db.ready">
-            </section>
+                </article>
+
+                <article id="quiz" class="row center" v-if="gameStarted">
+                    <div class="col start" v-for="category in game.categories">
+                        <h3>{{ category.category_name }}</h3>
+                        <div v-for="que in category.questions">
+                            <h4 class="btn">{{ que.question_level }}</h4>
+                        </div>
+                    </div>
+                </article>
+
+            </section> <!-- id=game -->
 
             
 

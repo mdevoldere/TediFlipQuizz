@@ -5,11 +5,10 @@ class Game
         this.teams = [];
         this.quiz = new Quiz();
         this.categories = [];
-        this.questions = [];
         this.activeTeam = 0;
         this.activeQuestion = 0;
         var database = this.db;
-        setTimeout(function() { database.init() }, 2000);
+        setTimeout(function() { database.init() }, 1000);
         //this.db.init();
     }
 
@@ -35,15 +34,10 @@ class Game
     }
 
     setQuiz(_id) {
+        console.log("Quiz: " + _id);
         this.quiz = this.db.getQuiz(_id);
         this.categories = this.db.getQuizCategories(_id);
-        this.questions = [];
-        for(var i=0; i<this.categories.length; i++) {
-            var r = this.db.getCategoryQuestions(this.categories[i].category_id);
-
-            for(var j=0; j<r.length; j++) {
-                this.questions.push(r[i]);
-            }
-        }
+        console.log("Quiz "+ this.quiz.quiz_theme +" Loaded");
+        console.log(this);
     }
 }

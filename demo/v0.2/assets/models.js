@@ -24,9 +24,10 @@ class Category
 {
     constructor(c){
         this.category_id = parseInt(c.category_id);
-        this.quiz_id = parseInt(c.quizz_id);
+        this.quiz_id = parseInt(c.quiz_id);
         this.category_name = c.category_name;
         this.category_description = c.category_description;
+        this.questions = [];
     }
 }
 

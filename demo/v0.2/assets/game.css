@@ -1,10 +1,13 @@
 /* TOP AREA */
 
 .top {
-    justify-content:space-between;
     text-transform: uppercase;
     color: var(--top);
     background-color: var(--bg-top);
+}
+
+.top > * {
+    padding: 0;
 }
 
 .top > h1 {
@@ -13,57 +16,53 @@
     width:300px;
 }
 
-.top .teams {
+.teams {
     flex: 2;
 }
 
-.top .menu {
+.menu {
     width:300px;
-    justify-content: flex-end;
 }
 
-.top a {
+.teams a, .menu a {
     position: relative;
     display: inline-block;
     height:100%;
     margin: 0 10px;
     padding: 15px;
-    color: var(--bg-top);
-    background-color: var(--top);
     text-decoration: none;
-    transition: all ease 1s;
     border: 2px solid transparent;
 }
 
-.top a:hover {
+.teams a:hover {
     color: var(--top);
     background-color: var(--bg-top);
 }
 
-.top a[data-tid="1"] {
+.teams a[data-tid="1"] {
     color: #fff;
     border-color: #0099CC;
     background-color: #0099CC66;
 }
-.top a[data-tid="2"] {
+.teams a[data-tid="2"] {
     color: #fff;
     border-color: #CC0000;
     background-color: #CC000066;
 }
-.top a[data-tid="3"] {
+.teams a[data-tid="3"] {
     color: #fff;
     border-color: #CCCC00;
     background-color: #CCCC0066;
 }
-.top a[data-tid="4"] {
+.teams a[data-tid="4"] {
     color: #fff;
     border-color: #9944CC;
     background-color: #9944CC66;
 }
 
-.top a.active, .top a:active {
-    background-color: var(--bg-active);
-    box-shadow: 0px -10px 20px 15px #009900;
+.teams a.active, .teams a:active {
+    background-color: #00000033;
+    box-shadow: 0px -10px 20px 15px #FFFFFF;
     /*transform: scale(1.5);*/
 }
 
@@ -101,14 +100,26 @@
     max-width: 100%;
 }
 
-.game > article {
+article {
     margin-top: 1em;
     max-width: 100%;
     transition: all ease 1s;
 }
 
 
-.game > article > h2 {
+article > h2 {
+    margin:0 auto 10px auto;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+article > h2 button {
+    margin: 0;
+    width: 125px;
+    font-size:1em;
+}
+
+article > h3 {
     margin:0 auto 10px auto;
     padding: 10px;
     color: var(--color);
@@ -116,13 +127,7 @@
 
 }
 
-.game > article > h3 {
-    margin:0 auto 10px auto;
-    padding: 10px;
-    color: var(--color);
-    background-color: var(--bg-color);
 
-}
 
 /* CONFIG */
 
@@ -134,20 +139,13 @@
     margin-top:0;
 }
 
-#config .row {
-    justify-content: flex-start;
-}
-
 #configTeams .row {
     justify-content: flex-end;
 }
 
 #config fieldset {
-    border: 1px solid #ccc;
-    background-color: var(--bg-color);
     width: 30%;
     margin: 1%;
-    height: 500px;
 }
 
 #config input {
@@ -156,32 +154,11 @@
     border:1px solid #111;
 }
 
-
-#config button {
-    margin-top: -10px;
-    margin-right: -10px;
-    width: 125px;
-    float:right;
-    padding: 10px;
-    border: 0;
-    font-size:1em;
-    color: var(--color);
-    background-color: var(--bg-active);
-}
-#config button:hover { 
-    color: var(--bg-active);
-    background-color: var(--bg);
-    cursor: pointer;
-}
-
 .config-team {
     color: var(--color);
     background-color: var(--bg-color);
     margin: 5% 2%;
 }
-
-
-
 
 .config-team h3 {
     margin:0;
@@ -195,3 +172,42 @@
     width: 90%;
 }
 
+
+#quiz > * {
+    padding: 0;
+    width: 15%;
+    margin: 1%;
+}
+
+#quiz > * > * {
+    margin-bottom: 10px;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+#quiz h3, #quiz h4 {
+    text-align: center;
+}
+
+#quiz div {
+    padding: 0;
+}
+
+#quiz h3 {
+    
+}
+
+#quiz h4 {
+    display: block;
+    margin: 0;
+    padding: 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+#quiz h4:hover {
+    color: var(--bg-color);
+    background-color: var(--color);
+}

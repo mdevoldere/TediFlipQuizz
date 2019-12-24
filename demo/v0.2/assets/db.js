@@ -19,16 +19,29 @@ class Db
             if (this.status === 200) {
                 dbself.json = JSON.parse(this.responseText);
 
-                for(var j=0; j<dbself.json.categories.length; j++) {
-                    dbself.categories.push(new Category(dbself.json.categories[j]));
+                for(var a=0; a<dbself.json.quizzes.length; a++) {
+                    let quizz = new Quiz();
+                    quizz.hydrate(dbself.json.quizzes[a]);
+                    dbself.quizzes.push(quizz);
                 }
 
-                for(var k=0; k<dbself.json.questions.length; k++) {
-                    dbself.questions.push(new Question(dbself.json.questions[k]));
+                for(var b=0; b<dbself.json.questions.length; b++) {
+                    dbself.questions.push(new Question(dbself.json.questions[b]));
                 }
 
-                dbself.ready = true;
-                
+                for(var i=0; i<dbself.json.categories.length; i++) {
+
+                    var cat = new Category(dbself.json.categories[i]);
+                    var que = dbself.questions.filter(item => item.category_id === cat.category_id);
+
+                    for(var j=0; j<que.length; j++) {
+                        cat.questions.push(que[j]);
+                    }
+                    
+                    dbself.categories.push(cat);
+                }
+
+                dbself.ready = true;                
                 console.log(dbself);
                 console.log("Game DB loaded !");
              }
@@ -59,6 +72,7 @@ class Db
     }
 
     getQuizCategories(_quiz_id) {
+        _quiz_id = parseInt(_quiz_id);
         return this.categories.filter(item => item.quiz_id === _quiz_id);
     }
 

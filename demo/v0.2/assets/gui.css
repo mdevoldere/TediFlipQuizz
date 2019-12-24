@@ -32,6 +32,63 @@ body {
     letter-spacing: 1px;
 }
 
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+.btn, 
+.top a {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px 10px;
+    border: 0;
+    text-decoration: none;
+    color:var(--bg);
+    background-color: var(--color);
+    cursor: pointer;
+    transition: all ease .8s;
+}
+
+button:hover, 
+input[type="button"]:hover, 
+input[type="submit"]:hover, 
+input[type="reset"]:hover, 
+.btn:hover, 
+.top a:hover {
+    background-color: var(--hover);
+}
+
+.success {
+    color:#EEE;
+    background-color: #009900AA;
+}
+
+.success:hover {
+    background-color: #009900;
+}
+
+.danger {
+    color:#EEE;
+    background-color: #990000AA;
+}
+
+.danger:hover {
+    background-color: #990000;
+}
+
+
+fieldset {
+    border: 1px solid #ccc;
+    background-color: var(--bg-color);
+}
+
+input[type="text"] {
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #111;
+}
+
+
 .app {
     height: 100%;
     width: 100%;
@@ -47,10 +104,30 @@ body {
     padding: 0;
 }
 
+.row > *, .col > * {
+    padding: 10px;
+}
+
 .row {
     flex-direction: row;
     align-items: stretch;
     justify-content: space-around;
+}
+
+.row.between {
+    justify-content: space-between;
+}
+
+.row.center {
+    justify-content: center;
+}
+
+.row.start, .col.start {
+    justify-content: flex-start;
+}
+
+.row.end {
+    justify-content: flex-end;
 }
 
 .col {
@@ -59,30 +136,9 @@ body {
     justify-content: space-around;
 }
 
-.btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 5px 10px;
-    border: 0;
-    text-decoration: none;
-    color:var(--color);
-    background-color: var(--bg);
-}
 
-.btn-success {
-    color:#FFF;
-    background-color: #009900;
-}
 
-.btn-danger {
-    color:#FFF;
-    background-color: #990000;
-}
 
-.btn:hover {
-    color:var(--bg);
-    background-color: var(--color);
-}
 
 @keyframes load {
     0%{
