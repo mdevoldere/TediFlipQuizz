@@ -93,6 +93,9 @@ class Db
     }
 
     getQuestion(_id) {
+        _id = parseInt(_id);
+        //console.log(_id);
+        //console.log(this.questions);
         return this.questions.find(item => item.question_id === _id);
     }
 }

@@ -8,7 +8,9 @@ const appData = {
         gameStarted: false,
         quizzesLoaded: false,
         game: new Game(),
-        activeTeam: 0        
+        activeTeam: 0,
+        activeQuestion: 0,    
+        question: null,  
     },
     created: function() {
 
@@ -48,10 +50,33 @@ const appData = {
             this.message = this.game.teams[this.activeTeam].name + "'s turn !";
         },
         questionClick : function(event) {
-          
-        },
-        questionAnswer : function(status, event) {
+          this.question = this.game.db.getQuestion(event.target.dataset.qid);
 
+          if(this.question.isAvailable) {
+            console.log(this.question);
+            this.activeQuestion = this.question.question_id;
+          }
+        },
+        questionAnswer : function(event) {
+            this.game.teams[this.activeTeam].score += parseInt(event.target.dataset.score);
+            this.message = "Team " + this.game.teams[this.activeTeam].name + " wins " + event.target.dataset.score + "pts";
+            this.activeQuestion = 0;
+            this.question.isAvailable = false;
+            
+            var cApp = this;
+            setTimeout(function() {
+                cApp.game.teams[cApp.activeTeam].isActive = false;
+                if(cApp.activeTeam >= cApp.game.teams.length-1) {
+                    cApp.activeTeam = 0;
+                }
+                else {
+                    cApp.activeTeam++;
+                }
+                cApp.game.teams[cApp.activeTeam].isActive = true;
+
+                cApp.message = "" + cApp.game.teams[cApp.activeTeam].name + "'s turn ";
+            
+            }, 2000);
         } 
     }
     

@@ -5,8 +5,8 @@ class Game
         this.teams = [];
         this.quiz = new Quiz();
         this.categories = [];
-        this.activeTeam = 0;
-        this.activeQuestion = 0;
+        //this.activeTeam = 0;
+        //this.activeQuestion = 0;
         var database = this.db;
         setTimeout(function() { database.init() }, 1000);
         //this.db.init();
@@ -26,7 +26,6 @@ class Game
             
             let _id = this.teams.length+1;
             this.teams.push(new Team(_id, ('Team #' + _id)));
-            this.teams[0].score = 3500;
         }
 
 
@@ -40,4 +39,5 @@ class Game
         console.log("Quiz "+ this.quiz.quiz_theme +" Loaded");
         console.log(this);
     }
+
 }

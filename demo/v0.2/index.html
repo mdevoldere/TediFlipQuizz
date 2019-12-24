@@ -69,10 +69,10 @@
                 </article>
 
                 <article id="quiz" class="row center" v-if="gameStarted">
-                    <div class="col start" v-for="category in game.categories">
+                    <div class="col start category" v-for="category in game.categories">
                         <h3>{{ category.category_name }}</h3>
-                        <div v-for="que in category.questions">
-                            <h4 class="btn">{{ que.question_level }}</h4>
+                        <div v-for="que in category.questions" v-bind:class="{ active: que.isAvailable }">
+                            <h4 v-on:click="questionClick" :data-qid="que.question_id" class="btn">{{ que.question_level }}</h4>
                         </div>
                     </div>
                 </article>
@@ -80,7 +80,13 @@
             </section> <!-- id=game -->
 
             
-
+            <section id="currentQuestion" v-if="activeQuestion > 0">
+                <div>
+                    <h2>{{ question.question_content }}</h2>
+                    <button :data-score="question.question_level" class="success" v-on:click="questionAnswer">Correct</button> 
+                    <button :data-score="0" class="danger" v-on:click="questionAnswer">Wrong Answer</button>
+                </div>
+            </section>
 
             
 

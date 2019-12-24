@@ -35,7 +35,7 @@ class Quiz
 {
     constructor() {
         this.quiz_id = 0;
-        this.quiz_theme = "Tedi FlipQuizz";
+        this.quiz_theme = "Tedi FlipQuiz";
         this.quiz_textcolor = "#000000";
         this.quiz_backcolor = "#FFFFFF";
     }
