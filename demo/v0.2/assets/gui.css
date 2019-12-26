@@ -158,3 +158,26 @@ input[type="text"] {
 	animation-direction: alternate;
 	text-shadow: 0 0 1px white;
 }
+
+.gamefade-enter-active, .gamefade-leave-active, .gamestart-enter-active, .gamestart-leave-active {
+    transition: all ease .8s;
+}
+
+.gamefade-enter, .gamefade-leave-to {
+transform: translateY(3000px);
+opacity: 0;
+}
+
+.gamestart-enter, .gamestart-leave-to {
+transform: translateX(3000px);
+opacity: 0;
+}
+
+.gamego-enter-active, .gamego-leave-active {
+    transition: all ease 4s;
+}
+
+.gamego-enter, .gamego-leave-to {
+transform: translateY(-2000px);
+opacity: 0;
+}
