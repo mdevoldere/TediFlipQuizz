@@ -1,0 +1,183 @@
+:root {
+    --bg: #fff;
+    --color: #000;
+    --hover: #339;
+    --bg-color: #ffffff66;
+    --bg-hover: #ffffff99;
+    --bg-active: #00990099;
+    --top: #DDDDDD99;
+    --bg-top: #00000099;
+    --bg-url: url('uj.jpg');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family:'Comic Sans MS', 'Comic Sans', cursive;
+    
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--color);
+    background-image: var(--bg-url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+.btn, 
+.top a {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px 10px;
+    border: 0;
+    text-decoration: none;
+    color:var(--bg);
+    background-color: var(--color);
+    cursor: pointer;
+    transition: all ease .8s;
+}
+
+button:hover, 
+input[type="button"]:hover, 
+input[type="submit"]:hover, 
+input[type="reset"]:hover, 
+.btn:hover, 
+.top a:hover {
+    background-color: var(--hover);
+}
+
+.success {
+    color:#EEE;
+    background-color: #009900AA;
+}
+
+.success:hover {
+    background-color: #009900;
+}
+
+.danger {
+    color:#EEE;
+    background-color: #990000AA;
+}
+
+.danger:hover {
+    background-color: #990000;
+}
+
+
+fieldset {
+    border: 1px solid #ccc;
+    background-color: var(--bg-color);
+}
+
+input[type="text"] {
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #111;
+}
+
+
+.app {
+    height: 100%;
+    width: 100%;
+    color: var(--color);
+    background-color: var(--bg-color);
+}
+
+.row, .col {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.row > *, .col > * {
+    padding: 10px;
+}
+
+.row {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.row.between {
+    justify-content: space-between;
+}
+
+.row.center {
+    justify-content: center;
+}
+
+.row.start, .col.start {
+    justify-content: flex-start;
+}
+
+.row.end {
+    justify-content: flex-end;
+}
+
+.col {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+
+
+
+
+@keyframes load {
+    0%{
+        opacity: 0.08;
+		filter: blur(5px);
+		letter-spacing: 3px;
+        }
+    100%{}
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px white;
+}
+
+.gamefade-enter-active, .gamefade-leave-active, .gamestart-enter-active, .gamestart-leave-active {
+    transition: all ease .8s;
+}
+
+.gamefade-enter, .gamefade-leave-to {
+transform: translateY(3000px);
+opacity: 0;
+}
+
+.gamestart-enter, .gamestart-leave-to {
+transform: translateX(3000px);
+opacity: 0;
+}
+
+.gamego-enter-active, .gamego-leave-active {
+    transition: all ease 4s;
+}
+
+.gamego-enter, .gamego-leave-to {
+transform: translateY(-2000px);
+opacity: 0;
+}

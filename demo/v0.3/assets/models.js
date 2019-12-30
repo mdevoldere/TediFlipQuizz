@@ -17,6 +17,7 @@ class Question
         this.question_content = q.question_content;
         this.question_answer = q.question_answer;
         this.isAvailable = true;
+        this.correctAnwser = false;
     }
 }
 
@@ -28,11 +29,18 @@ class Category
         this.category_name = c.category_name;
         this.category_description = c.category_description;
     }
+
+    setQuestions(_q) {
+        if(Array.isArray(_q)) {
+
+        }
+    }
 }
 
 class Quiz
 {
     constructor(q = null) {
+
         if(q !== null) {
             this.quiz_id = parseInt(q.quiz_id);
             this.quiz_theme = q.quiz_theme;
@@ -44,6 +52,17 @@ class Quiz
             this.quiz_theme = "Tedi FlipQuiz";
             this.quiz_textcolor = "#000000";
             this.quiz_backcolor = "#FFFFFF";
+        }
+
+        this.categories = [];
+    }
+
+    setCategories(_c) {
+        
+        this.categories = [];
+        
+        if(Array.isArray(_c)) {
+
         }
     }
 }

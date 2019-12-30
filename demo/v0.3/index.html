@@ -4,13 +4,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tedi Flip Quiz</title>
         <link rel="stylesheet" href="../v0.2/assets/gui.css">
-        <link rel="stylesheet" href="../v0.2/assets/game.css">
+        <link rel="stylesheet" href="./assets/game3.css">
         <script src="../v0.2/assets/vue.js"></script>
         <script src="../v0.2/assets/models.js"></script>
         <script src="../v0.2/assets/db.js"></script>
         <script src="../v0.2/assets/game.js"></script>
         <script src="../v0.2/assets/app.js"></script>
         <script src="../v0.2/assets/ui.js"></script>
+        <script>
+            const avatars = [
+                "cesar",
+                "cowgirl", 
+                "doc", 
+                "fox", 
+                "fox2", 
+                "genius", 
+                "ghost", 
+                "grog", 
+                "leo", 
+                "lion", 
+                "man",  
+                "nurse",  
+                "sonic",  
+                "sorcerer",  
+                "teemo",  
+                "woman", 
+            ];
+
+            function avatarOptions(_id) {
+                var str = '<select id="a'+ _id +'" data-avatar="1" data-tid="'+_id+'">';
+                for(var i=0; i<avatars.length; i++) {
+                    str += '<option value="'+avatars[i]+'">'+avatars[i]+'</option>';
+                }
+                str += "</select>";
+
+                return str;
+            }
+        </script>
     </head>
     <body>
         <main id="app" class="app">

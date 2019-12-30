@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tedi Flip Quiz</title>
+        <link rel="stylesheet" href="./assets/gui.css">
+        <link rel="stylesheet" href="./assets/game.css">
+    </head>
+    <body>
+        <main id="app" class="app">
+            <section id="top" class="row between top">
+                <h1>{{ game.quiz.quiz_theme }}</h1>
+                <div class="row teams">
+                    <a v-for="team in game.teams" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
+                </div>
+                <div class="row end menu">
+                    <a href="" id="end">Reload</a>
+                </div>
+            </section>
+
+            <section id="message" class="message">
+                <span v-if="game.db.ready">{{ message }}</span v-if="game.db.ready">
+                <span class="animate" v-else>Loading...</span>
+            </section>
+
+            <section id="game" class="game">
+
+                    <article id="config" v-bind:class="{ active: game.db.ready }" v-if="gameConfig">
+                        <h2 class="row between">
+                            <span>Configuration</span>
+                            <transition name="gamestart"><button v-if="gameReady" v-on:click="startQuiz">Start</button></transition>
+                        </h2>
+                        <div class="row start">
+                            <fieldset id="configTeams">
+                                <legend>Number of teams</legend>
+                                <div class="row">
+                                    <a class="btn danger" href="#" v-on:click="setTeams(0)" v-if="game.teams.length > 0">-</a>
+                                    <a class="btn success" href="#" v-on:click="setTeams(1)">+</a>
+                                    </div>
+                                <div class="config-team" v-for="team in game.teams">
+                                    <h3>Team #{{ team.id }}</h3>
+                                    <input v-model="team.name">
+                                </div>
+                            </fieldset>
+        
+                                <fieldset v-if="game.teams.length > 0" id="configQuiz">
+                                    <legend>Quiz selection</legend>
+                                    
+                                    <div v-for="quiz in game.db.quizzes">
+                                        <input :value="quiz.quiz_id" type="radio" name="gq" v-on:click="setQuiz"> 
+                                        {{ quiz.quiz_theme }}
+                                    </div>
+                                </fieldset> 
+                              
+                                <fieldset v-if="gameReady" id="configFinal">
+                                    <legend>{{ game.quiz.quiz_theme }}</legend>
+                                    <h3>Catégories: </h3>
+                                    <div v-for="cat in game.categories"> 
+                                        {{ cat.category_name }}<br>
+                                    </div>
+                                </fieldset>
+                            
+                        </div>
+                    </article>
+                
+                    <article id="quiz" class="row center" v-if="gameStarted">
+                        <div class="col start category" v-for="category in game.categories">
+                            <h3>{{ category.category_name }}</h3>
+                            <div v-for="que in category.questions" v-bind:class="{ active: que.isAvailable }">
+                                <h4 v-on:click="questionClick" :data-qid="que.question_id" class="btn">{{ que.question_level }}</h4>
+                            </div>
+                        </div>
+                    </article>
+
+            </section> <!-- id=game -->
+
+            <!-- <transition name="gamefade">
+                <section id="currentQuestion" v-if="activeQuestion > 0">
+                    <div>
+                        <h3>{{ game.teams[activeTeam].name }}</h3>
+                        <h2>{{ question.question_content }}</h2>
+                        <button :data-score="question.question_level" class="success" v-on:click="questionAnswer">Correct</button> 
+                        <button :data-score="0" class="danger" v-on:click="questionAnswer">Wrong Answer</button>
+                    </div>
+                </section>
+            </transition> -->
+            
+
+
+        </main>
+    </body>
+</html>

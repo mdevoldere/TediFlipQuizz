@@ -60,4 +60,18 @@ class Game
         this.teamId = (this.teamId >= this.teams.length-1) ? 0 : this.teamId+1;
         this.team = this.teams[this.teamId];
     }
+
+    goodAnswer(){
+        this.question.correctAnswer = true;
+    }
+
+    badAnswer(){
+        this.question.correctAnswer = false;        
+    }
+
+    scoreTeam(_team){
+        if(this.question.correctAnswer === true) {
+            _team.score += parseInt(this.question.question_level);
+        }
+    }
 }
