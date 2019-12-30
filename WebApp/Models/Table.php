@@ -25,5 +25,4 @@ class Table extends Model
         return $this->query("SELECT * FROM ".$this->name." WHERE ".$this->pk."=:id;", [':id' => $id]);
     }
 
-
 }

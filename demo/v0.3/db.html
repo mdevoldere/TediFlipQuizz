@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DB Queries</title>
+    </head>
+<body style="padding:1em;">
+    <h1>DB Queries</h1>
+    <div style="padding: 1em; margin-bottom: 1em;">
+        <button class="test" data-table="quiz" data-id = "0">All Quizzes</button>
+        <button class="test" data-table="quiz" data-id = "1">Quiz #1</button>
+        <button class="test" data-table="category" data-id = "0">All Categories</button>
+        <button class="test" data-table="category" data-id = "1">Category #1</button>
+        <button class="test" data-table="categoryquiz" data-id = "1">Quiz #1 Categories</button>
+        <button class="test" data-table="question" data-id = "0">All Questions</button>
+        <button class="test" data-table="question" data-id = "1">Question #1</button>
+        <button class="test" data-table="questioncategory" data-id = "1">Category #1 Questions</button>
+    </div>
+    <div style="padding: 1em; border:1px solid #111;" id="result">
+
+    </div>
+    <script>
+    window.addEventListener("DOMContentLoaded", function(event) {
+
+        const resultContainer = document.querySelector('#result');
+
+        var buttons = document.querySelectorAll('.test');
+
+        for(var i=0; i<buttons.length; i++) {
+            var btn = buttons[i];
+            
+            btn.addEventListener("click", function(event) {
+                
+                var table = event.target.dataset.table;
+                var id = event.target.dataset.id;
+                var url = "./api.php?t="+ table +"&id=" + id + "";
+                console.log(url);
+
+                var ajx = new XMLHttpRequest();
+
+                ajx.open('GET', url, true);
+
+                ajx.onload = function() {
+                    if (this.status === 200) {
+                        result = this.responseText;
+                        console.log(result);
+                        json = JSON.parse(result);        
+                        resultContainer.innerHTML =  "" + json.length + " elements<hr><pre>" + result + "</pre>";
+                    }
+                    else {
+                        console.log("AjxLoad Error. " + this.status + ": " + this.statusText);
+                    }
+                };
+        
+                ajx.send();
+            });
+        }
+
+    });
+    </script>
+</body>
+</html>

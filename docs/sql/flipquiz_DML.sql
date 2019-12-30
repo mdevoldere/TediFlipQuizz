@@ -58,7 +58,7 @@ VALUES
 (33, 'What is the answer to the question #33 ?', 'Anwser #33', 3, 7),
 (34, 'What is the answer to the question #34 ?', 'Anwser #34', 4, 7),
 (35, 'What is the answer to the question #35 ?', 'Anwser #35', 5, 7),
-(36, 'What is the answer to the question #36 ?', 'Anwser #36', 1, 7),
+(36, 'What is the answer to the question #36 ?', 'Anwser #36', 1, 8),
 (37, 'What is the answer to the question #37 ?', 'Anwser #37', 2, 8),
 (38, 'What is the answer to the question #38 ?', 'Anwser #38', 3, 8),
 (39, 'What is the answer to the question #39 ?', 'Anwser #39', 4, 8),
