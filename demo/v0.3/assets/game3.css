@@ -1,3 +1,40 @@
+h1, .message, .game {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--bg-color);
+    transition: all ease .8s;
+}
+
+.game {
+    min-height: 500px;
+}
+
+.menu {
+    display:block;
+    position:absolute;
+    top: 0;
+    right: 0;
+}
+
+#quiz {
+    position: relative;
+}
+
+.currentQuestion {
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #FFF;
+    background-color: #000;
+}
+
 .teams {
     position: absolute;
     left:0;
@@ -18,6 +55,7 @@
 .teams a {
     width: 250px;
     position:relative;
+    transition: all ease 1s;
 }
 
 
@@ -36,7 +74,9 @@
     width: 130px;
     height: 130px;
     background-color:transparent;
-    background-size: cover;
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
 }
 
 .teams a[data-tid="1"] {
@@ -45,7 +85,7 @@
     background-color: #0099CC66;
 }
 .teams a[data-tid="1"]:before {
-    background-image: url('../../resources/leo.png');
+    background-image: url('../../resources/dog-2.png');
 }
 
 .teams a[data-tid="2"] {
@@ -54,7 +94,7 @@
     background-color: #CC000066;
 }
 .teams a[data-tid="2"]:before {
-    background-image: url('../../resources/cesar.png');
+    background-image: url('../../resources/dog-3.png');
 }
 
 .teams a[data-tid="3"] {
@@ -63,7 +103,7 @@
     background-color: #CCCC0066;
 }
 .teams a[data-tid="3"]:before {
-    background-image: url('../../resources/woman.png');
+    background-image: url('../../resources/dog-4.png');
 }
 
 .teams a[data-tid="4"] {
@@ -72,14 +112,14 @@
     background-color: #9944CC66;
 }
 .teams a[data-tid="4"]:before {
-    background-image: url('../../resources/genius.png');
+    background-image: url('../../resources/dog-5.png');
 }
 
 
 .teams a.active, .teams a:active {
     background-color: #00000033;
     box-shadow: 0px -10px 20px 15px #FFFFFF;
-    /*transform: scale(1.5);*/
+    transform: scale(1.2);
 }
 
 .teams a span {

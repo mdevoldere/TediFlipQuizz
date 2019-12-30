@@ -80,6 +80,8 @@ input[type="reset"]:hover,
 fieldset {
     border: 1px solid #ccc;
     background-color: var(--bg-color);
+    margin: 10px;
+    width: 20%;
 }
 
 input[type="text"] {
@@ -164,12 +166,11 @@ input[type="text"] {
 }
 
 .gamefade-enter, .gamefade-leave-to {
-transform: translateY(3000px);
+/*transform: translateY(3000px);*/
 opacity: 0;
 }
 
 .gamestart-enter, .gamestart-leave-to {
-transform: translateX(3000px);
 opacity: 0;
 }
 
@@ -178,6 +179,6 @@ opacity: 0;
 }
 
 .gamego-enter, .gamego-leave-to {
-transform: translateY(-2000px);
+transform: translateY(2000px);
 opacity: 0;
 }

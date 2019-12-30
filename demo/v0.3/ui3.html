@@ -13,7 +13,7 @@
                 <div class="row teams">
                     <a v-for="team in game.teams" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
                 </div>
-                <div class="row end menu">
+                <div class="menu">
                     <a href="" id="end">Reload</a>
                 </div>
             </section>

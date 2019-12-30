@@ -3,34 +3,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tedi Flip Quiz</title>
-        <link rel="stylesheet" href="../v0.2/assets/gui.css">
+        <link rel="stylesheet" href="./assets/gui.css">
         <link rel="stylesheet" href="./assets/game3.css">
         <script src="../v0.2/assets/vue.js"></script>
         <script src="../v0.2/assets/models.js"></script>
+        <script src="../resources/resources.php?id=js"></script>
         <script src="../v0.2/assets/db.js"></script>
         <script src="../v0.2/assets/game.js"></script>
         <script src="../v0.2/assets/app.js"></script>
         <script src="../v0.2/assets/ui.js"></script>
         <script>
-            const avatars = [
-                "cesar",
-                "cowgirl", 
-                "doc", 
-                "fox", 
-                "fox2", 
-                "genius", 
-                "ghost", 
-                "grog", 
-                "leo", 
-                "lion", 
-                "man",  
-                "nurse",  
-                "sonic",  
-                "sorcerer",  
-                "teemo",  
-                "woman", 
-            ];
-
             function avatarOptions(_id) {
                 var str = '<select id="a'+ _id +'" data-avatar="1" data-tid="'+_id+'">';
                 for(var i=0; i<avatars.length; i++) {
@@ -44,15 +26,14 @@
     </head>
     <body>
         <main id="app" class="app">
-            <section id="top" class="row between top">
                 <h1>{{ game.quiz.quiz_theme }}</h1>
-                <div class="row teams">
-                    <a v-for="team in game.teams" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
-                </div>
-                <div class="row end menu">
+                <section class="row teams">
+                    <a v-for="team in game.teams" v-bind:key="team.id" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
+                </section>
+                <section class="col start menu">
                     <a href="" id="end">Reload</a>
-                </div>
-            </section>
+                </section>
+
 
             <section id="message" class="message">
                 <span v-if="game.db.ready">{{ message }}</span v-if="game.db.ready">
@@ -113,23 +94,20 @@
                                 <h4 v-on:click="questionClick" :data-qid="que.question_id" class="btn">{{ que.question_level }}</h4>
                             </div>
                         </div>
+                        <transition name="gamefade">
+                            <section id="currentQuestion" class="currentQuestion" v-if="activeQuestion > 0">
+                                <div>
+                                    <h3>{{ game.teams[activeTeam].name }}</h3>
+                                    <h2>{{ question.question_content }}</h2>
+                                    <button :data-score="question.question_level" class="success" v-on:click="questionAnswer">Correct</button> 
+                                    <button :data-score="0" class="danger" v-on:click="questionAnswer">Wrong Answer</button>
+                                </div>
+                            </section>
+                        </transition>
                     </article>
                 </transition>
 
             </section> <!-- id=game -->
-
-            <transition name="gamefade">
-                <section id="currentQuestion" v-if="activeQuestion > 0">
-                    <div>
-                        <h3>{{ game.teams[activeTeam].name }}</h3>
-                        <h2>{{ question.question_content }}</h2>
-                        <button :data-score="question.question_level" class="success" v-on:click="questionAnswer">Correct</button> 
-                        <button :data-score="0" class="danger" v-on:click="questionAnswer">Wrong Answer</button>
-                    </div>
-                </section>
-            </transition>
-            
-
 
         </main>
     </body>
