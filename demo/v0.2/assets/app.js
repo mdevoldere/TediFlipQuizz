@@ -3,6 +3,7 @@ const appData = {
     data: {
         title: "Tedi FlipQuiz",
         message: 'Welcome',
+        avatars: avatars,
         gameConfig: true,
         gameReady: false,
         gameStarted: false,

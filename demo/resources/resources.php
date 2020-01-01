@@ -9,7 +9,7 @@ switch($id)
         foreach(glob(__DIR__.'/*.png') as $k => $v) {
             $c = basename($v, '.png');
             $n = basename($v);
-            $css .= ".".$c.":before { background-image: url('./".$n."');}\n";
+            $css .= ".".$c.":before { background-image: url('./".$n."') !important;}\n";
         }
         exit($css);
     break;
@@ -20,7 +20,7 @@ switch($id)
             $c = basename($v, '.png');
             $js[] = "'".$c."'";
         }
-        exit('const avatars = ['.implode(',', $js).']');
+        exit('const avatars = ['.implode(',', $js).'];');
     break;
     default:
     break;

@@ -5,6 +5,7 @@
         <title>Tedi Flip Quiz</title>
         <link rel="stylesheet" href="./assets/gui.css">
         <link rel="stylesheet" href="./assets/game3.css">
+        <link rel="stylesheet" href="../resources/resources.php?id=css">
         <script src="../v0.2/assets/vue.js"></script>
         <script src="../v0.2/assets/models.js"></script>
         <script src="../resources/resources.php?id=js"></script>
@@ -12,29 +13,16 @@
         <script src="../v0.2/assets/game.js"></script>
         <script src="../v0.2/assets/app.js"></script>
         <script src="../v0.2/assets/ui.js"></script>
-        <script>
-            function avatarOptions(_id) {
-                var str = '<select id="a'+ _id +'" data-avatar="1" data-tid="'+_id+'">';
-                for(var i=0; i<avatars.length; i++) {
-                    str += '<option value="'+avatars[i]+'">'+avatars[i]+'</option>';
-                }
-                str += "</select>";
-
-                return str;
-            }
-        </script>
     </head>
     <body>
         <main id="app" class="app">
-                <h1>{{ game.quiz.quiz_theme }}</h1>
-                <section class="row teams">
-                    <a v-for="team in game.teams" v-bind:key="team.id" v-bind:class="{ active: team.isActive }" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
-                </section>
-                <section class="col start menu">
-                    <a href="" id="end">Reload</a>
-                </section>
-
-
+            <h1>{{ game.quiz.quiz_theme }}</h1>
+            <section class="row teams">
+                <a v-for="team in game.teams" v-bind:key="team.id" v-bind:class="[{ active: team.isActive }, team.avatar]" :data-tid="team.id" href="#">{{ team.name }} <span>{{ team.score }}</span></a>
+            </section>
+            <section class="col start menu">
+                <a href="" id="end">Reload</a>
+            </section>
             <section id="message" class="message">
                 <span v-if="game.db.ready">{{ message }}</span v-if="game.db.ready">
                 <span class="animate" v-else>Loading...</span>
@@ -51,13 +39,16 @@
                         <div class="row start">
                             <fieldset id="configTeams">
                                 <legend>Number of teams</legend>
-                                <div class="row">
+                                <div class="row end">
                                     <a class="btn danger" href="#" v-on:click="setTeams(0)" v-if="game.teams.length > 0">-</a>
                                     <a class="btn success" href="#" v-on:click="setTeams(1)">+</a>
                                     </div>
                                 <div class="config-team" v-for="team in game.teams">
                                     <h3>Team #{{ team.id }}</h3>
-                                    <input v-model="team.name">
+                                    <input v-model="team.name"> 
+                                    <select v-model="team.avatar">
+                                        <option v-for="av in avatars" v-bind:value="av">{{ av }}</option>
+                                      </select>
                                 </div>
                             </fieldset>
         
@@ -91,7 +82,7 @@
                         <div class="col start category" v-for="category in game.categories">
                             <h3>{{ category.category_name }}</h3>
                             <div v-for="que in category.questions" v-bind:class="{ active: que.isAvailable }">
-                                <h4 v-on:click="questionClick" :data-qid="que.question_id" class="btn">{{ que.question_level }}</h4>
+                                <h4 v-on:click="questionClick" :data-qid="que.question_id" class="">{{ que.question_level }}</h4>
                             </div>
                         </div>
                         <transition name="gamefade">

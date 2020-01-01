@@ -3,6 +3,7 @@ class Team
     constructor(_id, _name) {
         this.id = _id;
         this.name = _name;
+        this.avatar = 'dog-' + this.id;
         this.score = 0;
         this.isActive = false;
     }
