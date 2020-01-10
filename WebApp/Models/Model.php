@@ -2,71 +2,71 @@
 
 namespace Models;
 
-
+/** Classe Model : Représente une table
+ * 
+ */
 abstract class Model 
 {
-    /** @var PDO $db */
-    protected $db;
+    /** @var PDO $pdo Représente une connexion PDO vers une base de données */
+    protected $pdo;
 
-    public function __construct()
+    /** @var string $tableName Le nom de la table */
+    protected $tableName;
+
+    /** @var string $primaryKey Le nom de la clé primaire de la table */
+    protected $primaryKey;
+
+
+    /** Constructeur de la classe 
+     * @param string $_table Le nom de la table
+     * @param string $_pk Le nom de la clé primaire
+     */
+    protected function __construct(string $_table, string $_pk) 
     {
-        $this->db = Db::getDb();
+        $this->tableName = $_table;
+
+        $this->primaryKey = $_pk;
+
+        $this->pdo = Db::getDb(); // Récupère la connexion PDO
     }
 
-    public function query(string $sql, array $values = [])
+    /** Récupère toutes les lignes de la table courante
+     * @return array $result le résultat de la requête
+     */
+    public function getAll() 
     {
-        try {
-            if(empty($values)) {
-                return $this->db->query($sql)->fetch();
-            }
-            else {
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute($values);
-                $result = $stmt->fetch();
-                $stmt->closeCursor();
-                return $result;
-            }
-        }
-        catch(\PDOException $e) {
-            exit('Query Error: '.$e->getMessage());
-        }
+        $sql = ("SELECT * FROM ".$this->tableName);
+
+        /** @var $stmt PDOStatement */
+        $stmt = $this->pdo->query($sql);
+
+        $result = $stmt->fetchAll();
+
+        return $result;
     }
 
-    public function queryAll(string $sql, array $values = [])
+    /** Récupère un élément de la table à partir de son identifiant 
+     * @param int $_id l'identifiant à rechercher
+     * @return array|false $result le résultat de la requête sous forme de tableau ou false si la requête échoue
+     */
+    public function get(int $_id)
     {
-        try {
-            if(empty($values)) {
-                return $this->db->query($sql)->fetchAll();
-            }
-            else {
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute($values);
-                $result = $stmt->fetchAll();
-                $stmt->closeCursor();
-                return $result;
-            }
-        }
-        catch(\PDOException $e) {
-            exit('Query Error: '.$e->getMessage());
-        }
-    }
+        $sql = "SELECT * FROM ".$this->tableName." WHERE ".$this->primaryKey."=:id;";
 
-    public function exec(string $sql, array $values = [])
-    {
-        try {
-            if(empty($values)) {
-                return $this->db->exec($sql);
-            }
-            else {
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute($values);
-                $result = $stmt->rowCount();
-                $stmt->closeCursor();
-                return $result;
-            }
+        $stmt = $this->pdo->prepare($sql);
+
+        $vars = [
+            ':id' => $_id,
+        ];
+
+        $result = false;
+
+        if($stmt->execute($vars)) {
+            $result = $stmt->fetch();
         }
-        catch(\PDOException $e) {
-            exit('Query Error: '.$e->getMessage());
-        }
+
+        $stmt->closeCursor(); // ferme le curseur de la requête /!\ Obligatoire
+
+        return $result;
     }
 }

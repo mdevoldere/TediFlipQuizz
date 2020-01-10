@@ -1,20 +1,11 @@
-<?php
-
+<?php 
 namespace Models;
-
 
 class Quizzes extends Model
 {
-
-    public function getAll()
+    
+    public function __construct()
     {
-        return $this->queryAll("SELECT * FROM quizz;");
+        parent::__construct('fp_quizzes', 'quiz_id');
     }
-
-    public function get(int $id)
-    {
-        return $this->query("SELECT * FROM quizz WHERE quizz_id=:id;", [':id' => $id]);
-    }
-
-
-}
+} 
