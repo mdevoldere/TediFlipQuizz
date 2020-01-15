@@ -1,24 +1,24 @@
 <?php 
-require_once '../Debug.php';
-require_once '../Loader.php';
+require_once '../Debug.php'; 
+require_once '../Loader.php'; 
 // /api.php?t=categories 
 
 $table = $_GET['t'] ?? null;
 
-if($table === null) {
+if($table === null) { 
     exit('Welcome !');
 }
 
 $mapping = [
-    'quizzes'       => 'Models\\Quizzes',
-    'categories'    => 'Models\\Categories',
+    'quizzes'       => 'Models\\Quizzes', 
+    'categories'    => 'Models\\Categories', 
     'questions'     => 'Models\\Questions'
 ];
 
-$table = basename($table);
+$table = basename($table); 
 
 if(!array_key_exists($table, $mapping)) {
-    exit('Muhuhuhhahahah !');
+    exit('Muhuhuhhahahah !'); 
 }
 
 /*if(empty($mapping[$table])) {
