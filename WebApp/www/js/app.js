@@ -3,12 +3,21 @@ window.addEventListener('DOMContentLoaded', function() {
     app = new Vue({
         el: '#vue',
         data: {
+            quizzes: [],
             game: new Game(),
-            pageTitle: 'Mon super titre !',  
-            renderBody: 'Contenu de la page',
-            year: 2020,
-            authors: ['Julien', 'Adrien', 'Tib', 'François', 'Mr Balkany'],
-            isActive: false
+
+        },
+        mounted: function() {
+
+        },
+        methods: {
+            addTeam: function() {
+                this.game.addTeam();
+                console.log(this.game.teams.length);
+            },
+            deleteTeam: function() {
+                this.game.deleteTeam();
+            }
         },
     }); 
 

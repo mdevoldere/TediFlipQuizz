@@ -1,0 +1,39 @@
+.team-container {
+    border: 1px solid #F00;
+    padding: 10px;
+    flex-wrap:wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.team {
+    width: 250px;
+    margin: 10px;
+    padding: 1em;
+    border: 3px solid #111;
+}
+
+
+
+.team[data-id="1"] {
+    border-color: #ff0088;
+    background-color: #FF008833;
+}
+
+.team[data-id="2"] {
+    border-color: #00ffcc;
+    background-color: #00ffcc33;
+}
+
+.team[data-id="3"] {
+    border-color: #fa8072;
+    background-color: #fa807233;
+}
+
+.team[data-id="4"] {
+    border-color: #4B0082;
+    background-color: #4B008233;
+}
+

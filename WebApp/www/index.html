@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mon titre</title>
+        <link rel="stylesheet" href="css/app.css">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/Quiz.js"></script>
+        <script src="js/Team.js"></script>
+        <script src="js/Game.js"></script>
         <script src="js/app.js"></script>
     </head>
 
@@ -14,21 +18,28 @@
                 <h1>{{ pageTitle }}</h1>
             </header>
             <main>
-                {{ renderBody }}
-                <button id="btn">CLICK</button>
-                <br>
-                <input v-model="pageTitle">
-                <br>
-                <input v-model="year">
+                <div>
+                    <button v-on:click="deleteTeam()" v-if="game.teams.length > 0">-</button>
+                    <button v-on:click="addTeam()" v-if="game.teams.length < 4">+</button>
+                </div>
+                
+                <div class="team-container">
+                    <article class="team" :data-id="team.id" v-for="team in game.teams">
+                        {{ team.name }}
+                    </article>
+                </div>
+
+                <div>
+                    <p v-for="quiz in quizzes">
+                        {{ quiz.quiz_theme }}
+                    </p>
+                </div>
+
+                <hr>
+                
             </main>
             <footer>
-                <p>&copy; Copyright ARFP {{ year }}</p>
-                <p>Crédits</p>
-                <div v-for="author in authors">
-                    <p>{{ author }}</p>
-                </div>
-                <div v-if="isActive">Ceci est affiché !</div>
-                <div v-if="year > 2025">Après 2025</div>
+                <p>&copy; Copyright ARFP</p>
             </footer>
         </div>
     </body>
