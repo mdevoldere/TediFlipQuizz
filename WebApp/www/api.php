@@ -46,4 +46,6 @@ else {
 
 $result = json_encode($result, JSON_PRETTY_PRINT);
 
+//sleep(10);
+
 exit($result);

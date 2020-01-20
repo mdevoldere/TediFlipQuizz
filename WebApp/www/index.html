@@ -6,6 +6,7 @@
         <title>Mon titre</title>
         <link rel="stylesheet" href="css/app.css">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/Db.js"></script>
         <script src="js/Quiz.js"></script>
         <script src="js/Team.js"></script>
         <script src="js/Game.js"></script>
@@ -15,7 +16,7 @@
     <body>
         <div id="vue">
             <header>
-                <h1>{{ pageTitle }}</h1>
+                <h1>FlipQuiz</h1>
             </header>
             <main>
                 <div>
@@ -30,7 +31,7 @@
                 </div>
 
                 <div>
-                    <p v-for="quiz in quizzes">
+                   <p v-for="quiz in quizzes">
                         {{ quiz.quiz_theme }}
                     </p>
                 </div>

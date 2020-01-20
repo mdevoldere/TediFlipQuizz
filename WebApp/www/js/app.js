@@ -11,22 +11,25 @@ window.addEventListener('DOMContentLoaded', function() {
 
         },
         methods: {
+            getQuizzes: function (_db) {
+                this.quizzes = _db.quizzes;
+                console.log('App Quizzes loaded ');
+            },
             addTeam: function() {
                 this.game.addTeam();
                 console.log(this.game.teams.length);
+
+                if(this.quizzes.length < 1) {
+                    var db = new Db();
+                    db.loadQuizzes(this.getQuizzes);
+                }
+
             },
             deleteTeam: function() {
                 this.game.deleteTeam();
             }
         },
     }); 
-
-    document.querySelector('#btn').addEventListener('click', function() {
-        app.year = parseInt(app.year);
-        app.year += 1;
-        app.isActive = !app.isActive;
-    });
-
 
 });
 
