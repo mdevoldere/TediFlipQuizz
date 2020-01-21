@@ -26,6 +26,28 @@ class Db {
         }
 
         ajx.send();
+    }
+
+    loadCategories(_id) {
+        var ajx = new XMLHttpRequest();
+
+        ajx.open('GET', './api.php?t=categories&id=' + _id, true);
+
+        ajx.onload = function() {
+            if(this.status === 200) {
+                var json = JSON.parse(this.responseText);
+                console.log(json);
+            }
+            else {
+                alert('Error loading Categories');
+            }
+        }
+
+        ajx.send();
+
+    }
+
+    loadQuestions() {
 
     }
 }

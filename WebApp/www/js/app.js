@@ -27,6 +27,13 @@ window.addEventListener('DOMContentLoaded', function() {
             },
             deleteTeam: function() {
                 this.game.deleteTeam();
+            },
+            loadCategories: function(event) {
+                var db = new Db();
+                db.loadCategories(event.target.dataset.id);
+            },
+            getCategories: function() {
+
             }
         },
     }); 

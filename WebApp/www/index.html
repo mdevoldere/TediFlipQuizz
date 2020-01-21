@@ -19,7 +19,7 @@
                 <h1>FlipQuiz</h1>
             </header>
             <main>
-                <div>
+                <div class="team-selection">
                     <button v-on:click="deleteTeam()" v-if="game.teams.length > 0">-</button>
                     <button v-on:click="addTeam()" v-if="game.teams.length < 4">+</button>
                 </div>
@@ -30,9 +30,10 @@
                     </article>
                 </div>
 
-                <div>
+                <div class="quiz-container" v-if="game.teams.length > 0">
                    <p v-for="quiz in quizzes">
-                        {{ quiz.quiz_theme }}
+                       <input type="radio" name="the_quiz" :id="quiz.quiz_id" :data-id="quiz.quiz_id" v-on:change="loadCategories">
+                       <label :for="quiz.quiz_id">{{ quiz.quiz_theme }}</label>
                     </p>
                 </div>
 

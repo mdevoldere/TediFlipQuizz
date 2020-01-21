@@ -62,7 +62,7 @@ abstract class Model
         $result = false;
 
         if($stmt->execute($vars)) {
-            $result = $stmt->fetch();
+            $result = $stmt->fetchAll();
         }
 
         $stmt->closeCursor(); // ferme le curseur de la requête /!\ Obligatoire

@@ -1,3 +1,25 @@
+.team-selection {
+    width: 300px;
+    padding: 10px;
+    display:flex;
+    justify-content: flex-end;
+}
+
+.team-selection button {
+    padding: 5px 10px;
+    margin: 10px;
+    border: 1px solid #111;
+    background-color: #900;
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.team-selection button:last-child {
+    
+    background-color: #090;
+}
+
 .team-container {
     border: 1px solid #F00;
     padding: 10px;
@@ -37,3 +59,7 @@
     background-color: #4B008233;
 }
 
+.quiz-container {
+    width: 800px;
+    margin: 10px auto;
+}
