@@ -2,6 +2,7 @@ class Db {
 
     constructor() {
         this.quizzes = [];
+        this.categories = [];
     }
 
     loadQuizzes(_callback) {
@@ -28,7 +29,10 @@ class Db {
         ajx.send();
     }
 
-    loadCategories(_id) {
+    loadCategories(_id, _callback) {
+
+        var dbself = this;
+
         var ajx = new XMLHttpRequest();
 
         ajx.open('GET', './api.php?t=categories&id=' + _id, true);
@@ -36,7 +40,10 @@ class Db {
         ajx.onload = function() {
             if(this.status === 200) {
                 var json = JSON.parse(this.responseText);
+                dbself.categories = json;
+                _callback(dbself);
                 console.log(json);
+
             }
             else {
                 alert('Error loading Categories');
