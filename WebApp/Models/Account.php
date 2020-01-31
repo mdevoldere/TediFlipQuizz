@@ -17,7 +17,7 @@ class Account
     {
         if (!empty($_user)) {
             foreach ($this as $propertyName => $propertyValue) {
-                if(\array_key_exists($propertyName, $_user)) {
+                if (\array_key_exists($propertyName, $_user)) {
                     $this->{$propertyName} = $_user[$propertyName];
                 }
             }
@@ -35,5 +35,4 @@ class Account
 
         return $this->logged;
     }
-
 }
