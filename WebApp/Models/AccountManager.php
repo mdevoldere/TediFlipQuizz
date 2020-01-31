@@ -72,8 +72,13 @@ class AccountManager
     public function addUser($_username, $_password, $_email): bool
     {
         if(!$this->validUsername($_username)) {
-            return null;
+            return false;
         }
+
+        if($this->getUser($_username) !== null) {
+            return false;
+        }
+
         
         $newUser = [
             'username' => $_username,
