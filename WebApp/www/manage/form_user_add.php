@@ -1,5 +1,19 @@
 <h2>User List</h2>
 
+<?php
+    require_once dirname(__DIR__, 2).'/Loader.php';
+
+    $accounts = new Models\AccountManager;
+
+    foreach($accounts->getAccounts() as $user) {
+    ?>
+        <div>
+            <?=$user['email']; ?> :  <?php echo $user['username']; ?>
+        </div>
+
+    <?php
+    }
+?>
 
 
 <h2>Add User</h2>

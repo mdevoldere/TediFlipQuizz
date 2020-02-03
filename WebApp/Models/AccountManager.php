@@ -27,6 +27,7 @@ class AccountManager
         $content .= ';';
 
         \file_put_contents($this->filePath, $content);
+        \sleep(1);
     }
 
     /**
@@ -70,6 +71,15 @@ class AccountManager
         }
 
         return null;
+    }
+
+    /**
+     * Retourne la collection d'utilisateurs (sans blague !)
+     * @return array la collection d'utilisateurs
+     */
+    public function getAccounts() : array
+    {
+        return $this->accounts;
     }
 
     /**
