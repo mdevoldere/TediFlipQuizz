@@ -30,10 +30,28 @@ $result = $questions->getCatQuestions(1);
 d($result);
 */
 
+$users = [
+    0 => [
+        'username' => 'Mike',
+        'password' => 'kjlkjsjdfl',
+        'email' => 'Mike@test.fr',
+    ],
+    1 => [
+        'username' => 'Balkany',
+        'password' => 'kjlkjsjdfl',
+        'email' => 'Mister@test.fr',
+    ],
+    
+];
+
+
 
 $accounts = new Models\AccountManager();
 
-$mike = $accounts->getUser("Mike");
+$accounts->addUser('tib', 'monPassword', 'tib@jechercheunstage.fr');
+
+
+exit;
 d($mike);
 
 $inexistant = $accounts->getUser("Julien");

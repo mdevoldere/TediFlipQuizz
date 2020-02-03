@@ -13,11 +13,20 @@ class AccountManager
 
     public function __construct()
     {
-        $this->filePath =  \dirname(__DIR__) .'/data/accounts.php';
+        $this->filePath =  \dirname(__DIR__) . '/data/accounts.php';
 
         if (\is_file($this->filePath)) {
             $this->accounts = (require $this->filePath);
         }
+    }
+
+    public function save()
+    {
+        $content = '<?php return ';
+        $content .= var_export($this->accounts, true);
+        $content .= ';';
+
+        \file_put_contents($this->filePath, $content);
     }
 
     /**
@@ -25,13 +34,13 @@ class AccountManager
      * @param string $_username Le nom d'utilisateur à tester
      * @return bool true si le nom est valide. False sinon.
      */
-    public function validUsername(string $_username) : bool
+    public function validUsername(string $_username): bool
     {
-        if(empty($_username)) {
+        if (empty($_username)) {
             return false;
         }
 
-        if(\strlen($_username) < 3) {
+        if (\strlen($_username) < 3) {
             return false;
         }
 
@@ -50,12 +59,11 @@ class AccountManager
     {
         $_username = \basename($_username);
 
-        if(!$this->validUsername($_username)) {
+        if (!$this->validUsername($_username)) {
             return null;
         }
 
-        foreach($this->accounts as $key => $user) {
-
+        foreach ($this->accounts as $key => $user) {
             if ($user['username'] === $_username) {
                 return new Account($user);
             }
@@ -71,20 +79,25 @@ class AccountManager
      */
     public function addUser($_username, $_password, $_email): bool
     {
-        if(!$this->validUsername($_username)) {
+        if (!$this->validUsername($_username)) {
             return false;
         }
 
-        if($this->getUser($_username) !== null) {
+        if ($this->getUser($_username) !== null) {
             return false;
         }
 
-        
         $newUser = [
             'username' => $_username,
-            'password' => $_password,
+            'password' => \password_hash($_password, PASSWORD_BCRYPT),
             'email' => $_email,
         ];
+
+        $this->accounts[] = $newUser;
+
+        //\array_push($this->accounts, $newUser);
+
+        $this->save();
 
         return true;
     }
@@ -98,7 +111,7 @@ class AccountManager
         return true;
     }
 
-    
+
 
     /**
      * Vérifie si un utilisateur $_username existe et le supprime si tel est le cas
