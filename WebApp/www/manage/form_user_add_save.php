@@ -1,17 +1,17 @@
 <?php
-
 session_start();
-
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
 
-//d($_POST);
+
+$return_url = 'index.php?page=users';
+
 
 if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
 
     $_SESSION['error'] = 'Le formulaire est incomplet !';
 
-    header('location: form_user_add.php');
+    header('location: '.$return_url);
     exit;
 }
 
@@ -23,13 +23,21 @@ if($email === false) {
 
     $_SESSION['error'] = 'Le format email est invalide !';
 
-    header('location: form_user_add.php');
+    header('location: '.$return_url);
     exit;
 }
 
 $accounts = new Models\AccountManager();
-$accounts->addUser($username, $password, $email);
 
-$_SESSION['success'] = 'Utilisateur ajouté !';
+if ($accounts->addUser($username, $password, $email)) {
+    $_SESSION['success'] = 'Utilisateur ajouté !';
+}
+else {
+    $_SESSION['error'] = 'Erreur lors de l\'ajout de l\'utilisateur !';
+}
 
-header('location: form_user_add.php');
+
+
+
+
+header('location: '.$return_url);

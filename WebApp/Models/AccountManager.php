@@ -77,7 +77,7 @@ class AccountManager
      * Retourne la collection d'utilisateurs (sans blague !)
      * @return array la collection d'utilisateurs
      */
-    public function getAccounts() : array
+    public function getAccounts(): array
     {
         return $this->accounts;
     }
@@ -115,9 +115,21 @@ class AccountManager
     /**
      * Vérifie si un utilisateur $_username existe et contrôle la corrrespondance des mots de passe
      * Renvoie true en cas de succès et false en cas d'erreur
+     * @param string $_username Le nom d'utilisateur
+     * @param string $_password Le mot de passe
+     * @return boolean true si la connexio a réusii. false sinon
      */
-    public function login($_username, $_password): bool
+    public function login(string $_username, string $_password): bool
     {
+        $user = $this->getUser($_username);
+        
+        if($user === null) {
+            return false;
+        }
+
+        if(!$user->checkPassword($_password)) {
+            return false;
+        }
         return true;
     }
 
