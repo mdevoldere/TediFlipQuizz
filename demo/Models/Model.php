@@ -2,10 +2,12 @@
 
 namespace Models;
 
+use IModel;
+
 /** Classe Model : Représente une table
  * 
  */
-abstract class Model 
+abstract class Model implements IModel
 {
     /** @var PDO $pdo Représente une connexion PDO vers une base de données */
     protected $pdo;
@@ -33,35 +35,33 @@ abstract class Model
     /** Récupère toutes les lignes de la table courante
      * @return array $result le résultat de la requête
      */
-    public function getAll() 
+    public function getAll(): array
     {
-        $sql = ("SELECT * FROM ".$this->tableName.";");
-
         /** @var $stmt PDOStatement */
-        $stmt = $this->pdo->query($sql);
+        $stmt = $this->pdo->query("SELECT * FROM ".$this->tableName.";");
 
-        $result = $stmt->fetchAll();
-
-        return $result;
+        return $stmt->fetchAll();
     }
 
     /** Récupère un élément de la table à partir de son identifiant 
      * @param int $_id l'identifiant à rechercher
-     * @return array|false $result le résultat de la requête sous forme de tableau ou false si la requête échoue
+     * @return array $result le résultat de la requête sous forme de tableau ou un tableau vide si la requête échoue
      */
-    public function get(int $_id)
+    public function get($_id): array
     {
+        $_id = \intval($_id);
+
+        if($_id < 1) {
+            return [];
+        }
+
         $sql = "SELECT * FROM ".$this->tableName." WHERE ".$this->primaryKey."=:id;";
 
         $stmt = $this->pdo->prepare($sql);
 
-        $vars = [
-            ':id' => $_id,
-        ];
+        $result = [];
 
-        $result = false;
-
-        if($stmt->execute($vars)) {
+        if($stmt->execute([':id' => $_id,])) {
             $result = $stmt->fetchAll();
         }
 
