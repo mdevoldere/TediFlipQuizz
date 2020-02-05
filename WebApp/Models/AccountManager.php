@@ -117,7 +117,7 @@ class AccountManager
      * Renvoie true en cas de succès et false en cas d'erreur
      * @param string $_username Le nom d'utilisateur
      * @param string $_password Le mot de passe
-     * @return boolean true si la connexio a réusii. false sinon
+     * @return boolean true si la connexion a réussi. false sinon
      */
     public function login(string $_username, string $_password): bool
     {
@@ -130,6 +130,7 @@ class AccountManager
         if(!$user->checkPassword($_password)) {
             return false;
         }
+
         return true;
     }
 
@@ -139,9 +140,19 @@ class AccountManager
      * Vérifie si un utilisateur $_username existe et le supprime si tel est le cas
      * Renvoie true si un utilisateur a été supprimé
      * Renvoie false si l'utilisateur n'as pas été trouvé
+     * @param string $_username Le nom de l'utilisateur à supprimer
+     * @return bool true si la suppression a fonctionné, false sinon
      */
-    public function removeUser($_username): bool
+    public function removeUser(string $_username): bool
     {
-        return true;
+        foreach($this->accounts as $key => $user) {
+            if($user['username'] === $_username) {
+                unset($this->accounts[$key]);
+                $this->save();
+                return true;
+            }
+        }
+
+        return false;
     }
 }

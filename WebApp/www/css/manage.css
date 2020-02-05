@@ -12,11 +12,18 @@ body {
     grid-template-areas: "H H" "N M";
     color: #CCC;
     background-color: #222;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
+a, button {
     text-decoration: none;
     color: #FFF;
+    transition: all ease .8s;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #FF6;
 }
 
 header {
@@ -29,6 +36,16 @@ h1 {
     padding: 10px;
 }
 
+h2, h3 {
+    margin: 10px -10px;
+    padding: 10px;
+    background-color: #111;
+}
+
+h2 {
+    margin-top: -10px;
+}
+
 nav {
     grid-area: N;
 }
@@ -36,13 +53,21 @@ nav {
 main { 
     grid-area: M;
     background-color: #333;
-    padding: 1em;
+    padding: 10px;
+}
+
+form * {
+    transition: all ease .8s;
 }
 
 .menu {
     list-style: none;
-    margin:0;
+    margin: 0 10px;
     padding: 0;
+}
+
+.menu li {
+    margin-top: 5px;
 }
 
 .menu a {
@@ -50,4 +75,41 @@ main {
     padding: 10px;
     border: 1px solid #CCC;
     background-color: #333;
+}
+
+.menu a:hover {
+    background-color: #555;
+    color: #FF6;
+}
+
+label {
+    display:inline-block;
+    width: 200px;
+}
+
+input, button {
+    border: 1px solid #CCC;
+    background-color: #111;
+    color: #FF9;
+    padding: 3px;
+    margin: 3px;
+}
+
+input:focus {
+    border-color: #CCF;
+}
+
+button {
+    padding: 10px 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(#111, #555);
+}
+
+th, td {
+    border: 1px solid #CCC;
+    padding: 5px;
+    margin: 5px;
 }

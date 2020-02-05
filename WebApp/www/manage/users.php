@@ -1,18 +1,34 @@
-<h2>User List</h2>
+<h2>User Managment</h2>
+<p>Here you can view the list of users, modify and delete them. At the bottom of the page, you can add new ones.</p>
 
+<h3>User List</h3>
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
 <?php
     $accounts = new Models\AccountManager;
 
     foreach($accounts->getAccounts() as $user) {
     ?>
-        <div>
-            <?=$user['email']; ?> :  <?php echo $user['username']; ?>
-        </div>
+    <tr>
+        <td><?php echo $user['username']; ?></td>
+        <td><?=$user['email']; ?></td>
+        <td>
+            <a href="#>">Edit</a>
+
+          | <a href="#" data-username="<?=$user['username']; ?>">Delete</a>
+        </td>
+    </tr>
     <?php
     }
 ?>
+</table>
 
-<h2>Add User</h2>
+
+<h3>Add User</h3>
 <?php
 
 if(!empty($_SESSION['error'])) {

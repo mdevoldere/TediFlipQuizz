@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if(!empty($_SESSION['user'])) {
+    header('location: index.php');
+    exit;
+}
+
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
 

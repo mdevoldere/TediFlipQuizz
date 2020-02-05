@@ -1,5 +1,11 @@
 <?php
 session_start();
+/*
+if(empty($_SESSION['user'])) {
+    header('location: login.php');
+    exit;
+}
+*/
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
 ?>
@@ -9,6 +15,7 @@ require_once dirname(__DIR__, 2).'/Debug.php';
         <meta charset="utf-8">
         <title>FlipQuiz Admin</title>
         <link rel="stylesheet" href="../css/manage.css">
+        <script src="../js/manage.js"></script>
     </head>
 
     <body>
