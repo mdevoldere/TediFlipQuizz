@@ -8,12 +8,16 @@ class AccountManager
 {
     protected $filePath;
 
+    protected $filePathSafe;
+
     protected $accounts = [];
 
 
     public function __construct()
     {
         $this->filePath =  \dirname(__DIR__) . '/data/accounts.php';
+
+        $this->filePathSafe =  \dirname(__DIR__) . '/data/accounts.safe.php';
 
         if (\is_file($this->filePath)) {
             $this->accounts = (require $this->filePath);
@@ -22,8 +26,10 @@ class AccountManager
 
     public function save()
     {
+        @\copy($this->filePath, $this->filePathSafe);
+
         $content = '<?php return ';
-        $content .= var_export($this->accounts, true);
+        $content .= \var_export($this->accounts, true);
         $content .= ';';
 
         \file_put_contents($this->filePath, $content);
@@ -135,7 +141,6 @@ class AccountManager
     }
 
 
-
     /**
      * Vérifie si un utilisateur $_username existe et le supprime si tel est le cas
      * Renvoie true si un utilisateur a été supprimé
@@ -145,6 +150,10 @@ class AccountManager
      */
     public function removeUser(string $_username): bool
     {
+        if(count($this->accounts) < 2) {
+            return false;
+        }
+
         foreach($this->accounts as $key => $user) {
             if($user['username'] === $_username) {
                 unset($this->accounts[$key]);

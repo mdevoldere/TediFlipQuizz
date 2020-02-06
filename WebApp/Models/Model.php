@@ -69,4 +69,13 @@ abstract class Model
 
         return $result;
     }
+
+    public function count()
+    {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as nb FROM ".$this->tableName.";");
+
+        $result = $stmt->fetch();
+
+        return $result['nb'];
+    }
 }
