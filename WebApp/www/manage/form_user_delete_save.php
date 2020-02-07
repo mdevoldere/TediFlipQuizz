@@ -9,7 +9,7 @@ $username = $_POST['username'] ?? null;
 if(!empty($username)) {
 
     if($_SESSION['user'] === $username) {
-        echo "0";
+        echo "2";
         exit;
     }
 

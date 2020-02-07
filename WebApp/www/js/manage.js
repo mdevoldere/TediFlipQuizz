@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', function() {
             
             var username = this.dataset.username;
 
+            var toDelete = this;
+
             if(confirm('Delete ' + username + ' ?')) {
                 
                 var ajx = new XMLHttpRequest();
@@ -29,10 +31,14 @@ window.addEventListener('DOMContentLoaded', function() {
                         //console.log(this.responseText);
 
                         if(this.responseText == '1') {
-                            alert('Suppression effectuée');
+                            alert(username + ' deleted successfuly');
+                            document.location.reload();
+                        }
+                        else if(this.responseText == '2') {
+                            alert(username + ' not deleted: this is your account !!');
                         }
                         else {
-                            alert('Echec de la suppression');
+                            alert('Deletion failed !');
                         }
 
                     }
@@ -43,9 +49,14 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        
+    } // for deleteItems
 
-    }
+    document.querySelector("#passwordShow").addEventListener('click', function() {
+        var p = document.querySelector("#passwordField");
+        p.type = (p.type === 'password') ? 'text' : 'password';
+    });
+
+
 
 });
 

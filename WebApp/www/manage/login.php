@@ -1,10 +1,16 @@
 <?php
 session_start();
 
+if(!empty($_GET['logout'])) {
+    $_SESSION['user'] = null;
+    header('location: login.php');
+}
+
 if(!empty($_SESSION['user'])) {
     header('location: index.php');
     exit;
 }
+
 
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
@@ -29,22 +35,16 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
         <title>Authentication (Sign in)</title>
         <link rel="stylesheet" href="../css/manage.css">
     </head>
-    <body>
+    <body class="login-body">
         <header>
             <h1>Authentication</h1>
         </header>
-        <nav>
-
-        </nav>
+        <nav></nav>
         <main>
-            <form action="" method="post">
-            <label for="username">User name</label>
-            <input type="text" name="username" id="username" value="" required>
-
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="" required>
-
-            <button type="submit">Sign in</button>
+            <form action="" method="post" class="login-form">
+                <input type="text" name="username" id="username" value="" required placeholder="User Name">
+                <input type="password" name="password" id="password" value="" required placeholder="Password">
+                <button type="submit">Sign in</button>
             </form>
         </main>
     </body>

@@ -1,13 +1,15 @@
 <?php
 session_start();
-/*
+
 if(empty($_SESSION['user'])) {
     header('location: login.php');
     exit;
 }
-*/
+
 require_once dirname(__DIR__, 2).'/Loader.php';
 require_once dirname(__DIR__, 2).'/Debug.php';
+
+$accounts = new Models\AccountManager;
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +23,7 @@ require_once dirname(__DIR__, 2).'/Debug.php';
     <body>
         <header>
             <h1>Quiz Administration</h1>
+            <aside>Welcome <?=$_SESSION['user'] ?? 'Anonymous'; ?> (<a href="login.php?logout=1">logout</a>)</aside>
         </header>
         <nav>
             <ul class="menu">
