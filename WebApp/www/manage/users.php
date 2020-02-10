@@ -27,20 +27,7 @@
 
 
 <h3>Add User</h3>
-<?php
 
-if(!empty($_SESSION['error'])) {
-    echo $_SESSION['error'];
-    $_SESSION['error'] = null;
-    // unset($_SESSION['error']);
-}
-
-if(!empty($_SESSION['success'])) {
-    echo $_SESSION['success'];
-    $_SESSION['success'] = null;
-}
-
-?>
 
 <?php if(!empty($_GET['edit'])) {
     $userEditName = basename($_GET['edit']);

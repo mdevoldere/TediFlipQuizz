@@ -23,6 +23,9 @@ $accounts = new Models\AccountManager;
     <body>
         <header>
             <h1>Quiz Administration</h1>
+            <div>
+                <a class="btn" href="../">Start New Quiz</a>
+            </div>
             <aside>Welcome <?=$_SESSION['user'] ?? 'Anonymous'; ?> (<a href="login.php?logout=1">logout</a>)</aside>
         </header>
         <nav>
@@ -36,6 +39,18 @@ $accounts = new Models\AccountManager;
         </nav>
 
         <main>
+            <?php
+                if(!empty($_SESSION['error'])) {
+                    echo '<div class="flash">'.$_SESSION['error'].'</div>';
+                    $_SESSION['error'] = null;
+                    // unset($_SESSION['error']);
+                }
+
+                if(!empty($_SESSION['success'])) {
+                    echo '<div class="flash">'.$_SESSION['success'].'</div>';
+                    $_SESSION['success'] = null;
+                }
+            ?>
             <?php
                 $page = !empty($_GET['page']) ? $_GET['page'] : 'home'; // ternaire
                 // $page = $_GET['page'] ?? 'home'; // null Coalescing operator (equivalent du ternaire ci-dessus)
